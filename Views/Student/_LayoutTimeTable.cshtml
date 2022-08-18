@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/css/StyleSheetForStudent.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <!-- Start Landing Page -->
+    
+<div class="landing-page">
+  <div class="container">
+    <div class="header-area">
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Student" asp-action="Index" >  Home </a></li>
+        <li><a type="button" class="nav-link text-dark" asp-controller="Student" asp-action="TimeTable" >  View Time Table </a></li>
+        <li><a type="button" class="nav-link text-dark" asp-controller="Student" asp-action="ManageMySubject" >  Manage My Subjects</a></li>
+        <li><a type="button" class="nav-link text-dark" asp-controller="Student" asp-action="ManageAccount" >  Manage Account </a></li>
+       
+        <li>Log Out</li>
+      </ul>
+    </div>
+    <div class="info">
+      <u><h1>NB</h1></u>
+      <p>If you have questions concerning your TimeTable please contact your teacher.</p>
+      <button ><a type="button" class="nav-link text-dark" asp-controller="Student" asp-action="MySubjectPage" >  Go To My Subjects </a></button>
+      
+    </div>
+    <div class="image">
+      <img src="https://i.postimg.cc/Qtqxv7qw/Sample-Time-Table.png">
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="container body content">@RenderBody()</div>
+</body>
+</html>
