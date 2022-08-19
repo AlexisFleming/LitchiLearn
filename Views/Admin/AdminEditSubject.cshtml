@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+}
+@using Final_LitchiLearn.Models
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <style>     
+        
+    </style>
+    </head>
+    <body>
+        <div class="landing-page"><!--Start of Nav Bar-->
+  <div class="container">
+        <div class="header-area">
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard" >  Home </a></li>      
+        <li>Log Out</li>
+      </ul>
+    </div>
+    </div>
+    </div><!--End of Nav Bar-->
+        
+        <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Subject ID</th>
+            <th>Subject Name</th>
+            <th>Subject Grade</th>
+            <th>Grade Head</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Maths</td>
+            <td>Grade 6</td>
+            <td>William Kleff</td>            
+            <td>
+                <a class="btn btn-primary">Select Record</a>
+            </td>
+        </tr>     
+        <tr>
+            <td>2</td>
+            <td>English</td>
+            <td>Grade 5</td>
+            <td>Pelor Yarn</td>            
+            <td>
+                <a class="btn btn-primary">Select Record</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Geography</td>
+            <td>Grade 4</td>
+            <td>Tasha Iggwilv</td>
+            <td>
+                <a class="btn btn-primary">Select Record</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        <br />
+        <div class = "row" >
+        <div class="col-md-2">
+         <label for="filter">Filter By:</label>
+            <select name="filter" id="filterOption">
+                <option value="default">Select Option</option>
+                <option value="grade">Grade</option>
+                <option value="gradehead">Grade Head</option>
+                <option value="subname">Subject Name</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+         <label for="filterOrder">Order:</label>
+            <select name ="filterOrder" id="filterOrder">
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+       </div>
+       <div class="col-md-3">
+           <button type="button">Generate Report</button>
+       </div>
+              
+       </div>
+        <hr />       
+
+       <div class="row">
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Subject Name Form-Group-->
+            <label>Subject Name</label><br />
+            <input type="text" name="firstname" id="firstname" required>
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-8">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <label>Subject Grade</label><br />
+            <select name="subgrade" id="subgrade">
+                <option value="grade4">Grade 4</option>
+                <option value="grade5">Grade 5</option>
+                <option value="grade6">Grade 6</option>
+                <option value="grade7">Grade 7</option>
+            </select>
+        </div> <!--End of User Type Form-Group-->
+        </div>
+    </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Second Name Form-Group-->
+            <label>Grade Head</label><br />
+            <select name="subgrade" id="subgrade">
+                <option value="grade4">William Kleff</option>
+                <option value="grade5">Pelor Yarn</option>
+                <option value="grade6">Tasha Iggwilv</option>
+            </select>
+        </div><!--End of Second Name Form-Group-->
+        </div>
+
+        
+   </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->        
+        <div class="col-sm-4">
+            <br /> <button type="button">Confrim Changes?</button> 
+        </div>
+        <div class="col-sm-8">
+             <button type="button">Remove Record</button> 
+        </div>
+    </div><!--End of Row-->
+
+
+
+    </body>
+
+</html>

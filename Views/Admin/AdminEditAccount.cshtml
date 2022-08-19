@@ -1,0 +1,162 @@
+﻿@{
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+}
+@using Final_LitchiLearn.Models
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <style>     
+        
+    </style>
+    </head>
+    <body>
+        <div class="landing-page"><!--Start of Nav Bar-->
+  <div class="container">
+        <div class="header-area">
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard" >  Home </a></li>      
+        <li>Log Out</li>
+      </ul>
+    </div>
+    </div>
+    </div><!--End of Nav Bar-->
+        
+        <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>User Type</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>8002bbee-437e-4602-8d10-a2c06a28a096</td>
+            <td>RobinB-4362</td>
+            <td>RoB1n$94</td>
+            <td>Robin</td>
+            <td>Hood</td>
+            <td>Teacher</td>
+            <td>robin@gmail.com</td>
+            <td>
+                <a class="btn btn-primary">Select Record</a>
+            </td>
+        </tr>     
+        <tr>
+            <td>9bd57745-011b-4136-8775-151adc5c00d2</td>
+            <td>PeterT-968A</td>
+            <td>Pe7er!</td>
+            <td>Peter</td>
+            <td>Pan</td>
+            <td>Student</td>
+            <td>peter@gmail.com</td>
+            <td>
+                <a class="btn btn-primary">Select Record</a>
+            </td>
+        </tr>
+        <tr>
+            <td>f8073fae-d4fc-411c-ba2f-4bc71bcb87da</td>
+            <td>schoolAdmin</td>
+            <td>Her$#ie87!</td>
+            <td>Mark</td>
+            <td>Smith</td>
+            <td>Admin</td>
+            <td>schooladmin@gmail.com</td>
+            <td>
+                <a class="btn btn-primary">Select Record</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        <br />
+        <div class = "row" >
+        <div class="col-md-2">
+         <label for="filter">Filter By:</label>
+            <select name="filter" id="filterOption">
+                <option value="default">Select Option</option>
+                <option value="username">User Name</option>
+                <option value="userType">User Type</option>
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+         <label for="filterOrder">Order:</label>
+            <select name ="filterOrder" id="filterOrder">
+                <option value="asc">ASC</option>
+                <option value="desc">DESC</option>
+            </select>
+       </div>
+       <div class="col-md-3">
+           <button type="button">Generate Report</button>
+       </div>
+              
+       </div>
+        <hr />       
+
+       <div class="row">
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of First Name Form-Group-->
+            <label>First Name</label><br />
+            <input type="text" name="firstname" id="firstname" required>
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-8">
+        <div class="form-group"><!--Start of Email Form-Group-->
+            <label>Email</label><br />
+            <input type="text" name="email" id="email">
+        </div>
+        </div>
+    </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Second Name Form-Group-->
+            <label>Last Name</label><br />
+            <input type="text" name="lastname" id="lastname">
+        </div><!--End of Second Name Form-Group-->
+        </div>
+
+        <div class="col-sm-8">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <label>User Type</label><br />
+            <select name="RoleType" id="userRole">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="subCord">Subject Coordinator</option>
+                <option value="hod">HOD</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div> <!--End of User Type Form-Group-->
+        </div>
+   </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Password Form-Group-->
+            <label>Password</label><br />
+            <input type="text" name="password" id="password" required>
+        </div><!--End of Password Form-Group-->
+        </div>
+        <div class="col-sm-8">
+             <button type="button">Confrim Changes?</button> 
+        </div>
+    </div><!--End of Row-->
+    <div class="row">
+        <div class="col-sm-4">
+        <div class="form-group">
+            <button type="button">Remove Record?</button>
+            </div>
+            </div>
+    </div>
+
+
+    </body>
+
+</html>

@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Create Subject";
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+}
+@using Final_LitchiLearn.Models
+<!DOCTYPE HTML>
+<html>
+<head><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" /></head>   
+    <div class="landing-page"><!--Start of Nav Bar-->
+  <div class="container">
+        <div class="header-area">
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard" >  Home </a></li>      
+        <li>Log Out</li>
+      </ul>
+    </div>
+    </div>
+    </div><!--End of Nav Bar-->
+
+    <h4>Insert new subject into the system</h4>
+        
+
+        <hr />
+    <div class="row">
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Subject Name Form-Group-->
+            <label>Subject Name</label><br />
+            <input type="text" placeholder="Enter Subject Name" name="subject" id="subject" required>
+        </div><!--End of Subject Name Form-Group-->
+        </div>
+        <div class="col-sm-8">
+        <div class="form-group"><!--Start of Grade Selection Form-Group-->
+            <label>Assign Grade to Subject</label><br />
+            <select name="grade" id="grade">
+                <option value="default">Assign Grade</option>
+                <option value="grade 4">Grade 4</option>
+                <option value="grade 5">Grade 5</option>
+                <option value="grade 6">Grade 6</option>
+                <option value="grade 7">Grade 7</option>
+            </select>
+        </div> <!--End of Grade Selection Form-Group-->
+        </div>
+    </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Grade Head Form-Group-->
+            <label>Select Grade Head</label><br />
+            <select name="gradehead" id="gradehead">
+                <option value="Default">Assign Grade Head</option>
+                <option value="option1">William Kleff</option>
+                <option value="option2">Pelor Yarn</option>
+                <option value="option3">Tasha Iggwilv</option>
+            </select>
+        </div> <!--End of Grade Head Form-Group-->
+        </div>
+
+        
+   </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        
+        <div class="col-sm-8">
+             <button type="button">Add User</button> 
+        </div>
+    </div><!--End of Row-->
+
+</html>
