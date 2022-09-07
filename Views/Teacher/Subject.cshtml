@@ -1,0 +1,55 @@
+﻿@using Final_LitchiLearn.Models
+@{
+   
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Subject"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+</head>
+<body>
+<h1> Your Subjects</h1>
+<div class="container-fluid">
+    <div class="row">
+  <div class="col-sm-6">
+    <div class="card border-primary">
+      <div class="card-body">
+        <h5 class="card-title">Maths</h5>
+        <p class="card-text">Grade 5 </p>
+         <input type="button"class="btn btn-primary" value="Go to Subject" onclick = "location.href='@Url.Action("Topics", "Teacher")'" />
+       </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card border-primary">
+      <div class="card-body">
+        <h5 class="card-title">English</h5>
+        <p class="card-text">Level Grade 4</p>
+        <a href="#" class="btn btn-primary">Go to Subject</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<div class ="row">
+     <div class="col-sm-6">
+    <div class="card border-primary">
+      <div class="card-body">
+        <h5 class="card-title">Maths</h5>
+        <p class="card-text">Grade 4.</p>
+        <a href="#" class="btn btn-primary">Go to Subject</a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+</body>
+</html>

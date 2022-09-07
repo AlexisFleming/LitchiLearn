@@ -1,4 +1,58 @@
 ﻿@{
     ViewData["Title"] = "Teacher";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Dashboard"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+</head>
+<body>
+<h2>Hello, This is your Dashboard</h2>
+<div class="row">
+    <div class=" col"> 
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">  
+  <div class="card-body">
+    <h4 class="card-title">Students completed quiz</h4>  
+    <hr />
+    <h5>5 completed</h5>
+    </div>
+    
+ </div>
+ </div> 
+      <div class=" col"> 
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Reports</h5>                
+                <a href="#" class="btn btn-secondary">Go to Reports</a>
+             </div>
+         </div>
+      </div>
+ </div>
+
+
+
+ <div class="card text-white bg-success mb-3" style="max-width: 18rem;">  
+  <div class="card-body">
+    <h4 class="card-title">Students enrolled </h4>
+     <hr />
+    <h5>  7 </h5>
+ </div>
+ </div>
+ <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">  
+  <div class="card-body">
+    <h4 class="card-title">Days left in Semester</h4>
+            <hr />
+    <h5> 36 Days</h5>
+ </div>
+
+</div>
+
+
+
+</body>
+</html>

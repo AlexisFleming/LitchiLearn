@@ -1,0 +1,52 @@
+﻿@using Final_LitchiLearn.Models
+@{
+   
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["QuizMarks"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+</head>
+<h3>Quiz Feedback</h3>
+<hr />
+<h4>The Basic Operations Quiz</h4>
+<body>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">StudentID</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Mark Total</th>
+      <th scope="col">Change Mark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otter</td>
+      <td>4/5</td>
+      <td>
+         <a class="btn btn-primary">Edit</a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Moon</td>
+      <td>2/5</td>
+      <td>
+         <a class="btn btn-primary">Edit</a>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+</body>
+</html>

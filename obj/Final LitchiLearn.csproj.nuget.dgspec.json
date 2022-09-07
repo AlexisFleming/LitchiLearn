@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\LitchiLearn\\Final LitchiLearn.csproj": {}
+    "C:\\Users\\laxif\\OneDrive\\Documents\\old LITCHILEARN\\Final LitchiLearn\\Final LitchiLearn.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\LitchiLearn\\Final LitchiLearn.csproj": {
+    "C:\\Users\\laxif\\OneDrive\\Documents\\old LITCHILEARN\\Final LitchiLearn\\Final LitchiLearn.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\LitchiLearn\\Final LitchiLearn.csproj",
+        "projectUniqueName": "C:\\Users\\laxif\\OneDrive\\Documents\\old LITCHILEARN\\Final LitchiLearn\\Final LitchiLearn.csproj",
         "projectName": "Final LitchiLearn",
-        "projectPath": "C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\LitchiLearn\\Final LitchiLearn.csproj",
-        "packagesPath": "C:\\Users\\joshu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\LitchiLearn\\obj\\",
+        "projectPath": "C:\\Users\\laxif\\OneDrive\\Documents\\old LITCHILEARN\\Final LitchiLearn\\Final LitchiLearn.csproj",
+        "packagesPath": "C:\\Users\\laxif\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\laxif\\OneDrive\\Documents\\old LITCHILEARN\\Final LitchiLearn\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\joshu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\laxif\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
