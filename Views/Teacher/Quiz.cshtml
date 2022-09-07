@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Quiz";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+<div class="container">
+
+<h4> Basic Operations / Create Quiz </h4>
+<h2> Fill in the answers in the textboxes below</h2>
+  <form >
+    <div class="row">
+      <div class="col-25">
+        <label class="form-label"> 5 + 5 = ___</label>
+      </div>
+      <div class="col-25">
+        <input type="text"  class="form-control" placeholder="Answer..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label class="form-label">2 - 1 = ___</label>
+      </div><br />
+      <div class="col-25">
+        <input type="text" class="form-control" placeholder="Answer..">
+      </div>
+    </div>
+    <br />
+      <div class="col-75">
+        <label for="exampleDataList" class="form-label">Select the correct symbol for Division: </label>
+        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+        <datalist id="datalistOptions">
+            <option value=" + "></option>
+            <option value=" - "></option>
+            <option value=" x "></option>
+            <option value=" ÷ "></option>            
+        </datalist>
+      </div>
+    
+    <br /><br />
+     <input type="button"class="btn btn-primary" value="Create Quiz" />
+    
+    
+  </form>
+</div>

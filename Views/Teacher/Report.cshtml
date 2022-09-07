@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Teacher";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Report"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+</head>
+<body>
+    <h4> Reports</h4>
+    <hr />
+    <form>   
+        
+       
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Student's Name">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Subject's Name">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Quiz Name">
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Search" />
+                
+            </div>     
+        </div>           
+        
+        <br />
+        <div>
+            <div class="col">
+                <button type="button" class="btn btn-primary">Download as PDF</button>
+                <button type="button" class="btn btn-primary">Download as Excel</button>
+                <button type="button" class="btn btn-primary">Print</button>
+            </div>
+        </div>
+
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">StudentID</th>
+                    <th scope="col">Student</th>
+                    <th scope="col">Subject Enrolled</th>
+                    <th scope="col">Quiz Completed</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>                    
+                    <td>Mark Otter</td>
+                    <td>English</td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>                    
+                    <td>Jack Sparrow</td>
+                    <td>Englsih</td>
+                    <td>Incomplete</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </form>
+
+
+</body>
+</html>

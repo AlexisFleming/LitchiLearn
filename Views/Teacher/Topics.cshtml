@@ -1,0 +1,70 @@
+﻿@using Final_LitchiLearn.Models
+@{
+   
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Topic"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+</head>
+<body>
+    <h2>Grade 5</h2>
+    <h3>Topics</h3>
+    <hr />
+
+    <a class="btn btn-primary" href="#" role="button">Add Another Lesson</a>
+    <br /><br />
+    <div>
+        <h6><input class="custom-checkbox" type="checkbox" /> Hide Lesson</h6>
+    </div>
+
+    <div class="row">
+          <div class="col">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">The Basic Operations</h5>
+                      <p class="card-text">Addition is bringing two or more numbers (or things) together to make a new total<br />
+                          <hr />Subtraction is taking one number away from another<br />
+                          <hr />Multiplication is repeated addition
+                          </p>
+                      <a href="#" class="btn btn-primary">Go to Quiz</a>
+                      <a href="#" onclick = "location.href='@Url.Action("Quiz", "Teacher")'" class="btn btn-secondary">Create Quiz</a>
+                  </div>
+              </div>
+          </div>
+    </div>
+    <br />
+    <div>
+        <h6><input class="custom-checkbox" type="checkbox" /> Hide Lesson</h6>
+    </div>
+     <div class="row">
+          <div class="col">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title">Add Decimals</h5>
+                      <p class="card-text">Common fractions and decimals.<br/>
+                          <hr />Adding decimals intro<br />
+                          <hr />Adding deciamls (tenths)
+                          </p>
+                      <a href="#" class="btn btn-primary">Go to Quiz</a>
+                      <a href="#" class="btn btn-secondary">Create Quiz</a>
+                  </div>
+              </div>
+          </div>
+    </div>
+    
+
+    
+    
+    
+
+
+   
+   
+</body>
+</html>
