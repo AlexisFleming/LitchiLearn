@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Create User Account";
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+
+
+}
+@using Final_LitchiLearn.Models
+<!DOCTYPE HTML>
+<html>
+<head><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" /></head>   
+
+   
+    <div class="landing-page"><!--Start of Nav Bar-->
+  <div class="container">
+        <div class="header-area">
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard" >  Home </a></li>      
+        <li>Log Out</li>
+      </ul>
+    </div>
+    </div>
+    </div><!--End of Nav Bar-->
+        <h4>Insert new user into the system</h4>
+
+        <hr />
+    <div class="row">
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of First Name Form-Group-->
+            <label>First Name</label><br />
+            <input type="text" placeholder="Enter Firstname" name="firstname" id="firstname" required>
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-8">
+        <div class="form-group"><!--Start of Email Form-Group-->
+            <label>Email</label><br />
+            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        </div>
+        </div>
+    </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Second Name Form-Group-->
+            <label>Last Name</label><br />
+            <input type="text" placeholder="Enter LastName" name="lastname" id="lastname" required>
+        </div><!--End of Second Name Form-Group-->
+        </div>
+
+        <div class="col-sm-8">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <label>User Type</label><br />
+            <select name="RoleType" id="userRole">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="subCord">Subject Coordinator</option>
+                <option value="hod">HOD</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div> <!--End of User Type Form-Group-->
+        </div>
+   </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        <div class="col-sm-4">
+        <div class="form-group"><!--Start of Password Form-Group-->
+            <label>Password</label><br />
+            <input type="text" placeholder="Enter Password" name="password" id="password" required>
+        </div><!--End of Password Form-Group-->
+        </div>
+        <div class="col-sm-8">
+             <button type="button">Add User</button> 
+        </div>
+    </div><!--End of Row-->
+
+</html>

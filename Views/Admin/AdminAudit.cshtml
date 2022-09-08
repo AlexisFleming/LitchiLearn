@@ -1,0 +1,168 @@
+﻿@{
+        Layout = "~/Pages/AdminDashboardLayout.cshtml";
+
+}
+@using Final_LitchiLearn.Models
+<!DOCTYPE HTML>
+<html>
+    <head >
+
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <style>     
+        
+    </style>
+    </head>
+    <body>
+        <div class="landing-page"><!--Start of Nav Bar-->
+  <div class="container">
+        <div class="header-area">
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard" >  Home </a></li>      
+        <li>Log Out</li>
+      </ul>
+    </div>
+    </div>
+    </div><!--End of Nav Bar-->
+    
+    <h4>Audit Report</h4>
+    <br />
+    <div class="row">
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of Subject Name Form-Group-->
+            <label>User Name</label><br />
+            <select name="subgrade" id="subgrade">
+                <option value="grade4">George</option>
+                <option value="grade5">Jamie</option>
+                <option value="grade6">Lunk</option>
+                <option value="grade7">Geralt</option>
+            </select>
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <label>Action</label><br />
+            <select name="subgrade" id="subgrade">
+                <option value="grade4">Create</option>
+                <option value="grade5">Delete</option>
+                <option value="grade6">Update</option>
+            </select>
+        </div> <!--End of User Type Form-Group-->
+        </div>
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <label>Record Type</label><br />
+            <select name="subgrade" id="subgrade">
+                <option value="grade4">User Account</option>
+                <option value="grade5">Subject</option>
+            </select>
+        </div> <!--End of User Type Form-Group-->
+        </div>
+    </div><!--End of Row-->
+    <div class="row">
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of Subject Name Form-Group-->
+            <label>Coloumn Name</label><br />
+            <select name="subgrade" id="subgrade">
+                <option value="grade4">User Name</option>
+                <option value="grade5">First Name</option>
+                <option value="grade6">Last Name</option>
+                <option value="grade7">Email</option>
+            </select>
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <label>Old Value</label><br />
+            <input type="text" placeholder="Old Value" name="subject" id="subject">
+        </div> <!--End of User Type Form-Group-->
+        </div>
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <label>New Value</label><br />
+            <input type="text" placeholder="New Value" name="subject" id="subject">
+        </div> <!--End of User Type Form-Group-->
+        </div>
+    </div><!--End of Row-->
+    <div class="row">
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of Subject Name Form-Group-->
+            <label>Date</label><br />
+            <input type="text" placeholder="DD/MM/YY" name="subject" id="subject">
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of User Type Form-Group-->
+            <br /><label>Include Removed</label>
+            <input type="checkbox" id="" name="" value="">
+        </div> <!--End of User Type Form-Group-->
+        </div>
+        <div class="col-sm-2">
+        <div class="form-group"><!--Start of User Type Form-Group-->       
+            <br />
+            <button type="button">Apply Filter</button>
+        </div> <!--End of User Type Form-Group-->
+        </div>
+    </div><!--End of Row-->
+    <hr />
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Record ID</th>
+            <th>User Name</th>
+            <th>Action</th>
+            <th>Record Type</th>
+            <th>Coloumn Name</th>
+            <th>Old Value</th>
+            <th>New Value</th>
+            <th>30/01/2022 15:59</th>  
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>1</th>
+            <th>JeffKapp</th>
+            <th>Delete</th>
+            <th>User Account</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>06/11/2021 10:11</th> 
+        </tr>     
+        <tr>
+            <th>4</th>
+            <th>JakeDunn</th>
+            <th>Update</th>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Grade 4</th>
+            <th>Grade 5</th>
+            <th>14/04/2022 14:35</th> 
+        </tr>
+        <tr>
+            <th>5</th>
+            <th>FreddyFaz</th>
+            <th>Create</th>
+            <th>User Account</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>10/03/2021 06:00</th> 
+        </tr>
+        <tr>
+            <th>6</th>
+            <th>LufE</th>
+            <th>Update</th>
+            <th>User Account</th>
+            <th>Last Name</th>
+            <th>Herbs</th>
+            <th>Doyle</th>
+            <th>20/07/2022 10:45</th>  
+        </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>

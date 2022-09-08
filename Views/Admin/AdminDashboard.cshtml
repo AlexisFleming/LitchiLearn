@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+
+} 
+@using Final_LitchiLearn.Models
+<!DOCTYPE HTML>
+<html>
+    <head>
+    </head>
+<body>
+<div class="landing-page">
+  <div class="container">
+    <div class="header-area"><!--Start of Nav Bar-->
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard" >  Home </a></li>      
+        <li>Log Out</li>
+      </ul>
+    </div><!--End of Nav Bar-->
+    <h4>DashBoard</h4>
+    <div class="info">
+      
+      <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminCreateAccount" >  Add User to System </a></button>
+      <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminEditAccount" >  Manage User Records </a></button>
+      <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminCreateSubject" >  Add Subject to System </a></button>
+      <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminEditSubject" >  Manage subjects </a></button>
+      <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminAudit" >  Generate Audit Report </a></button>
+    </div>
+    <div class="image">
+      <img src="https://i.postimg.cc/CxqfxSQP/360-F-256586027-Ja0-E6-FOAijsmd-Byqp-JCrb9c9eqre-C7-AL.jpg">
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+</body>
+</html>
