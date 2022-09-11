@@ -1,4 +1,47 @@
 ﻿@{
+    @model IEnumerable<Final_LitchiLearn.Models.TimeTable>
+
     ViewData["Title"] = "Time Table";
     Layout = "~/Views/Student/_LayoutTimeTable.cshtml";
 }
+@if (Model.Count() >0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Bender Name
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    Weapon
+                </th>
+                <th>
+                    Fighting Styles
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var TimeTable in Model)
+            {
+                <tr>
+                    <td width="35%">@TimeTable.Grade</td>
+                    <td width="35%">@TimeTable.TimeTableData</td>
+                   
+                       @*  <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Fighter" asp-action="Update" asp-route-ID="@fighter.FighterID" class="btn btn-primary mx-1">Update</a>                                
+                         </div>
+                    </td>*@
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p> No fighters have been created.</p>
+}
+</div>

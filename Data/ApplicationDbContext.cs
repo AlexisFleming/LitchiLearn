@@ -48,5 +48,6 @@ namespace Final_LitchiLearn.Data
                 entity.ToTable("UserTokens");
             });
         }
+        public DbSet<TimeTable> TimeTable { get; set; }
     }
 }
