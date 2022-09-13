@@ -14,7 +14,7 @@ namespace Final_LitchiLearn.Models
         
         public int StudentID { get; set; }
         
-        public int SubjectID { get; set; }
+        public string SubjectID { get; set; }
 
     }
 

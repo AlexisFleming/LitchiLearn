@@ -10,13 +10,13 @@ namespace Final_LitchiLearn.Models
     public class TimeTable
     {
         [Key]
-        public int UserID { get; set; }
+        public string SubjectID { get; set; }
         
-        public int Grade { get; set; }
+        public string Day { get; set; }
         
-        public int SubjectID { get; set; }
+        public string Time { get; set; }
 
-       public string TimeTableData { get; set; }
+        public string Venue { get; set; }
     }
 
 }

@@ -3,14 +3,15 @@
 
     ViewData["Title"] = "Time Table";
     Layout = "~/Views/Student/_LayoutTimeTable.cshtml";
+
 }
 <div class="container p-3">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h2 class="text-primary">Time Table</h2>
+    <div class="row pt-5">
+        <div class="col-7">
+         <h2 class="text-primary" align="right" style="color :#ff8c69" >Time Table</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-controller="Fighter" asp-action="Create" class="btn btn-primary">Add a new fighter</a>
+          
         </div>
     </div>
     <br />
@@ -20,16 +21,16 @@
         <thead>
             <tr>
                 <th>
-                    UserID
+                    Subject Code
                 </th>
                 <th>
-                    Grade
+                    Day
                 </th>
                 <th>
-                    Subject ID
+                    Time
                 </th>
                 <th>
-                    TimeTable
+                   Venue
                 </th>
             </tr>
         </thead>
@@ -37,10 +38,11 @@
             @foreach (var TimeTable in Model)
             {
                 <tr>
-                    <td width="35%">@TimeTable.UserID</td>
-                    <td width="35%">@TimeTable.Grade</td>
+
                     <td width="35%">@TimeTable.SubjectID</td>
-                    <td width="35%">@TimeTable.TimeTableData</td>
+                    <td width="35%">@TimeTable.Day</td>
+                    <td width="35%">@TimeTable.Time</td>
+                    <td width="35%">@TimeTable.Venue</td>
                    
                    
                      
