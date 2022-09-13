@@ -105,13 +105,21 @@ namespace Final_LitchiLearn.Migrations
 
             modelBuilder.Entity("Final_LitchiLearn.Models.TimeTable", b =>
                 {
-                    b.Property<string>("TimeTableData")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("Grade")
                         .HasColumnType("int");
 
-                    b.HasKey("TimeTableData");
+                    b.Property<int>("SubjectID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TimeTableData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserID");
 
                     b.ToTable("TimeTable");
                 });

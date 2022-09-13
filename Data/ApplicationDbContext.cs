@@ -10,10 +10,16 @@ namespace Final_LitchiLearn.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-       
+      
+        public DbSet<TimeTable> TimeTable { get; set; }
+
+        public DbSet<Enrol> EnrolTable { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
+
+
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -47,7 +53,9 @@ namespace Final_LitchiLearn.Data
             {
                 entity.ToTable("UserTokens");
             });
+            
+
         }
-        public DbSet<TimeTable> TimeTable { get; set; }
+       
     }
 }

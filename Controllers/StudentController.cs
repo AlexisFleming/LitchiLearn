@@ -2,6 +2,7 @@
 using Final_LitchiLearn.Data;
 using Final_LitchiLearn.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Final_LitchiLearn.Controllers
 {
@@ -23,7 +24,8 @@ namespace Final_LitchiLearn.Controllers
         }
         public IActionResult MySubjectPage()
         {
-            return View();
+            IEnumerable<Enrol> objList = _db.EnrolTable;
+            return View(objList);
         }
 
         public IActionResult ManageAccount()

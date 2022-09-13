@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace Final_LitchiLearn.Models
 {
-    public class TimeTable
+    public class Enrol
     {
         [Key]
-        public int UserID { get; set; }
+        public int EnrolID { get; set; }
         
-        public int Grade { get; set; }
+        public int StudentID { get; set; }
         
         public int SubjectID { get; set; }
 
-       public string TimeTableData { get; set; }
     }
 
 }
