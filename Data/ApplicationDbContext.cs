@@ -17,6 +17,8 @@ namespace Final_LitchiLearn.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Topics> Topics { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<Enrol> EnrolTable { get; set; }
+        public DbSet<TimeTable> TimeTable { get; set; }
 
 
 

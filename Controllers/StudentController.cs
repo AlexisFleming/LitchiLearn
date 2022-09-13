@@ -3,9 +3,12 @@ using Final_LitchiLearn.Data;
 using Final_LitchiLearn.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Final_LitchiLearn.Enums;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Final_LitchiLearn.Controllers
 {
+    [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
         private readonly ApplicationDbContext _db;

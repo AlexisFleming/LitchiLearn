@@ -1,4 +1,5 @@
 ﻿@using Final_LitchiLearn.Models
+@model IEnumerable<Final_LitchiLearn.Models.Subject>
 @{
    
     Layout = "~/Views/Shared/_TeacherLayout.cshtml";
@@ -14,42 +15,45 @@
 </head>
 <body>
 <h1> Your Subjects</h1>
-<div class="container-fluid">
-    <div class="row">
-  <div class="col-sm-6">
-    <div class="card border-primary">
-      <div class="card-body">
-        <h5 class="card-title">Maths</h5>
-        <p class="card-text">Grade 5 </p>
-         <input type="button"class="btn btn-primary" value="Go to Subject" onclick = "location.href='@Url.Action("Topics", "Teacher")'" />
-       </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card border-primary">
-      <div class="card-body">
-        <h5 class="card-title">English</h5>
-        <p class="card-text">Level Grade 4</p>
-        <a href="#" class="btn btn-primary">Go to Subject</a>
-      </div>
-    </div>
-  </div>
-</div>
-<br/>
-<div class ="row">
-     <div class="col-sm-6">
-    <div class="card border-primary">
-      <div class="card-body">
-        <h5 class="card-title">Maths</h5>
-        <p class="card-text">Grade 4.</p>
-        <a href="#" class="btn btn-primary">Go to Subject</a>
-      </div>
-    </div>
-  </div>
 
+@if(Model.Count()>0)
+{
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        SubjectID
+                    </th>
+                    <th>
+                        Subject
+                    </th>                    
 
-</div>
-</div>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var subject in Model)
+                {
+                    <tr>
+                        <td width="35%">@subject.SubjectName</td>
+                        
+                        <td width="30%">
+                            <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Teacher" asp-action="Update" asp-route-ID="@subject.SubjectID" class="btn btn-primary mx-1">Update</a>
+                                <a asp-controller="Teacher" asp-action="Delete" asp-route-ID="@subject.SubjectID" class="btn btn-danger mx-1">Delete</a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+}
+else
+{
+    <p>No Subjects Assigned to you yet.</p>
+}
+
 
 </body>
 </html>

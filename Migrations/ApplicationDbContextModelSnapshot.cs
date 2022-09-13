@@ -71,9 +71,6 @@ namespace Final_LitchiLearn.Migrations
                     b.Property<byte[]>("ProfilePicture")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("RoleID")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -103,25 +100,140 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Final_LitchiLearn.Models.TimeTable", b =>
+            modelBuilder.Entity("Final_LitchiLearn.Models.Enrol", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("EnrolID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("Grade")
+                    b.Property<int>("StudentID")
                         .HasColumnType("int");
+
+                    b.Property<string>("SubjectID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EnrolID");
+
+                    b.ToTable("EnrolTable");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Question", b =>
+                {
+                    b.Property<int>("QuestionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("EndDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("QuestionName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("QuizID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("QuestionID");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Quiz", b =>
+                {
+                    b.Property<int>("QuizID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("QuestionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("QuizName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TopicsID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalMarks")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuizID");
+
+                    b.HasIndex("QuestionID");
+
+                    b.ToTable("Quizzes");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Subject", b =>
+                {
+                    b.Property<int>("SubjectID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("SubjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubjectID");
+
+                    b.ToTable("Subjects");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.TimeTable", b =>
+                {
+                    b.Property<string>("SubjectID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Day")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Venue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubjectID");
+
+                    b.ToTable("TimeTable");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Topics", b =>
+                {
+                    b.Property<int>("TopicID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("TopicDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TopicName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TopicID");
+
+                    b.ToTable("Topics");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.UserSubject", b =>
+                {
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("SubjectID")
                         .HasColumnType("int");
 
-                    b.Property<string>("TimeTableData")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("UserID", "SubjectID");
 
-                    b.HasKey("UserID");
+                    b.HasIndex("SubjectID");
 
-                    b.ToTable("TimeTable");
+                    b.ToTable("UserSubject");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -255,6 +367,47 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("UserTokens");
                 });
 
+            modelBuilder.Entity("QuizTopics", b =>
+                {
+                    b.Property<int>("QuizID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TopicsTopicID")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuizID", "TopicsTopicID");
+
+                    b.HasIndex("TopicsTopicID");
+
+                    b.ToTable("QuizTopics");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Quiz", b =>
+                {
+                    b.HasOne("Final_LitchiLearn.Models.Question", null)
+                        .WithMany("Quiz")
+                        .HasForeignKey("QuestionID");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.UserSubject", b =>
+                {
+                    b.HasOne("Final_LitchiLearn.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final_LitchiLearn.Models.ApplicationUser", "User")
+                        .WithMany("UserSubjects")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -304,6 +457,31 @@ namespace Final_LitchiLearn.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("QuizTopics", b =>
+                {
+                    b.HasOne("Final_LitchiLearn.Models.Quiz", null)
+                        .WithMany()
+                        .HasForeignKey("QuizID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final_LitchiLearn.Models.Topics", null)
+                        .WithMany()
+                        .HasForeignKey("TopicsTopicID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("UserSubjects");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Question", b =>
+                {
+                    b.Navigation("Quiz");
                 });
 #pragma warning restore 612, 618
         }

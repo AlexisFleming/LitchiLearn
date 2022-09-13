@@ -7,13 +7,13 @@ namespace Final_LitchiLearn.Models
 {
     public class Question
     {
+        [Key]
         public int QuestionID { get; set; }
         public string QuestionName { get; set; }
-        [DataType(DataType.DateTime)]
-        [DisplayFormat]
-        public DateAndTime StartDateTime { get; set; }
-        [DataType(DataType.DateTime)]
-        public DateAndTime EndDateTime { get; set; }
+        [DataType(DataType.Time)]       
+        public DateTime StartDateTime { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime EndDateTime { get; set; }
 
 
 

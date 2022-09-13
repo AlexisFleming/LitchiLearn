@@ -6,8 +6,10 @@ namespace Final_LitchiLearn.Models
 {
     public class Topics
     {
+        [Key]
         public int TopicID { get; set; }
         public string TopicName { get; set; }
+        public string TopicDesc { get; set; }
         public virtual ICollection<Quiz> Quiz { get; set; }
     }
 }
