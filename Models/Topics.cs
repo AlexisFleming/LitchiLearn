@@ -1,0 +1,13 @@
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Final_LitchiLearn.Models
+{
+    public class Topics
+    {
+        public int TopicID { get; set; }
+        public string TopicName { get; set; }
+        public virtual ICollection<Quiz> Quiz { get; set; }
+    }
+}

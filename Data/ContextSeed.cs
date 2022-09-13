@@ -11,7 +11,7 @@ namespace Final_LitchiLearn.Data
         public static async Task SeedRolesAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Roles
-            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.SchoolAdmin.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Admin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.HOD.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.SubjectCoordinator.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Teacher.ToString()));
@@ -22,8 +22,8 @@ namespace Final_LitchiLearn.Data
             //Seed Default User
             var defaultUser = new ApplicationUser
             {
-                UserName = "schooladmin",
-                Email = "schooladmin@gmail.com",
+                UserName = "admin",
+                Email = "admin@gmail.com",
                 FirstName = "Mark",
                 LastName = "Smith",
                 EmailConfirmed = true,
@@ -39,7 +39,7 @@ namespace Final_LitchiLearn.Data
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Teacher.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.SubjectCoordinator.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.HOD.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.SchoolAdmin.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Admin.ToString());
                 }
 
             }

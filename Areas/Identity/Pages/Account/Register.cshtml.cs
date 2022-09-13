@@ -53,7 +53,7 @@ namespace Final_LitchiLearn.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
-            [Required]
+            [Required(ErrorMessage = "Email Address is required")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
