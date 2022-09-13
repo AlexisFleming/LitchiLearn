@@ -11,9 +11,7 @@ namespace Final_LitchiLearn.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
       
-        public DbSet<TimeTable> TimeTable { get; set; }
-
-        public DbSet<Enrol> EnrolTable { get; set; }
+       
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -56,6 +54,8 @@ namespace Final_LitchiLearn.Data
             
 
         }
-       
+        public DbSet<TimeTable> TimeTable { get; set; }
+
+        public DbSet<Enrol> EnrolTable { get; set; }
     }
 }

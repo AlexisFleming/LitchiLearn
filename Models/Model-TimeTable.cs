@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Final_LitchiLearn.Models
 {
+
     public class TimeTable
     {
         [Key]
         public string SubjectID { get; set; }
+
+        public string Subject { get; set; }
         
         public string Day { get; set; }
         
