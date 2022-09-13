@@ -82,30 +82,102 @@ namespace Final_LitchiLearn.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-        //maybe code here can alloate users to their pages
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
-        {
-            returnUrl ??= Url.Content("~/");
+        //maybe code here can alloate users to their pages\
 
-            //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        
+
+        //public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        //{
+        //    returnUrl ??= Url.Content("~/");
+
+        //    //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        var userName = Input.Email;
+        //        if (IsValidEmail(Input.Email))
+        //        {
+        //            var user = await _userManager.FindByEmailAsync(Input.Email);
+        //            if (user != null)
+        //            {
+        //                userName = user.UserName;
+        //            }
+        //        }
+        //        var result = await _signInManager.PasswordSignInAsync(userName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+        //        if (result.Succeeded)
+        //        {
+        //            _logger.LogInformation("User logged in.");
+        //            return LocalRedirect(returnUrl);
+        //        }
+        //        if (result.RequiresTwoFactor)
+        //        {
+        //            return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+        //        }
+        //        if (result.IsLockedOut)
+        //        {
+        //            _logger.LogWarning("User account locked out.");
+        //            return RedirectToPage("./Lockout");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        //            return Page();
+        //        }
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return Page();
+
+        //}
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)//here you are setting null to returnUrl
+        {
+            returnUrl = returnUrl ?? Url.Content("~/"); //redirect to this url ("~/") if is null
+
             if (ModelState.IsValid)
             {
-                var userName = Input.Email;
-                if (IsValidEmail(Input.Email))
-                {
-                    var user = await _userManager.FindByEmailAsync(Input.Email);
-                    if (user != null)
-                    {
-                        userName = user.UserName;
-                    }
-                }
-                var result = await _signInManager.PasswordSignInAsync(userName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    //if(!string.IsNullOrEmpty(returnUrl))//returnUrl = null, so will not enter to the if block, remove that block
+                    //{
+                    //  _logger.LogInformation("User logged in.");
+                    if (User.IsInRole("Student"))
+                    {
+                        return Redirect("~/Student/Index");
+                    }
+                    else if (User.IsInRole("Teacher"))
+                    {
+                        return Redirect("~/Teacher/Index");
+                    }
+                    else if (User.IsInRole("Admin"))
+                    {
+                        return Redirect("~/Admin/AdminDashboard");
+                    }
+                    else if (User.IsInRole("SubjectCoordinator"))
+                    {
+                        return Redirect("~/SubCo/Index");
+                    }
+                    else if (User.IsInRole("HOD"))
+                    {
+                        return Redirect("~/HOD/Index");                    
+                    }
+
+
+                    //}
+                    // else
+
+                    //{
+                    else
+                    {
+                        _logger.LogInformation("User logged in.");
+                        return LocalRedirect(returnUrl);//redirect to this page returnUrl = ("~/")
+                    }
+                    // }
+
+
                 }
                 if (result.RequiresTwoFactor)
                 {
