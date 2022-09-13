@@ -4,16 +4,22 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+
+
 
 namespace Final_LitchiLearn.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-      
-        public DbSet<TimeTable> TimeTable { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Topics> Topics { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
 
-        public DbSet<Enrol> EnrolTable { get; set; }
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -54,7 +60,23 @@ namespace Final_LitchiLearn.Data
                 entity.ToTable("UserTokens");
             });
             
+            
+            builder.Entity<UserSubject>()
+                .HasKey(us => new { us.UserID, us.SubjectID });
 
+            builder.Entity<UserSubject>()
+                .HasOne(us => us.User)
+                .WithMany(au => au.UserSubjects)
+                .HasForeignKey(us => us.UserID);
+
+            builder.Entity<UserSubject>()
+                .HasOne(us => us.Subject)
+                .WithMany() 
+                .HasForeignKey(us => us.SubjectID);
+            // If you add `public ICollection<UserBook> UserBooks { get; set; }`navigation property
+            // to Book model class then replace `.WithMany()` with `.WithMany(b => b.UserBooks)`
+
+            
         }
        
     }

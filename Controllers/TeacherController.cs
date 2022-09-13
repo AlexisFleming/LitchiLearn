@@ -1,12 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Final_LitchiLearn.Models;
+using Final_LitchiLearn.Data;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Final_LitchiLearn.Controllers
 {
+    [Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
-        //[Authorize(Roles = "Teacher")]
+        private readonly ApplicationDbContext _db;
+
+        public TeacherController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -14,7 +24,9 @@ namespace Final_LitchiLearn.Controllers
         
         public IActionResult Subject()
         {
-            return View();
+            //load subjects to the Subject Page
+            IEnumerable<Subject> sub = _db.Subjects;
+            return View(sub);
         }
         public IActionResult Topics()
         {

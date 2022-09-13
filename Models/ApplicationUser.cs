@@ -16,6 +16,7 @@ namespace Final_LitchiLearn.Models
         public string email { get; set; }
         public byte[] ProfilePicture { get; set; }
 
-        public int RoleID { get; set; }
+        public ICollection<UserSubject> UserSubjects { get; set; }
     }
+
 }

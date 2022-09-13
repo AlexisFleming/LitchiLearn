@@ -82,7 +82,7 @@ namespace Final_LitchiLearn.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-
+        //maybe code here can alloate users to their pages
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
