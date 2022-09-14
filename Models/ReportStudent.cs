@@ -7,16 +7,24 @@ using System.Threading.Tasks;
 
 namespace Final_LitchiLearn.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ReportStudent
     {
-        //public int UserID { get; set; }
+        [Key]
+        public int StudentID { get; set; }
 
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
-       // public string email { get; set; }
-        public byte[] ProfilePicture { get; set; }
 
-        public ICollection<UserSubject> UserSubjects { get; set; }
+        public string Grade { get; set; }
+
+        public int Year { get; set; }
+
+        public string Teacher { get; set; }
+
+        public int Subject { get; set; }
+
+        public string Mark { get; set; }
+
     }
-
 }
