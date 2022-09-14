@@ -24,10 +24,10 @@
             @foreach(FileClass file in Model.files)
             {
                 <tr>
-                    <td>@file.FieldID</td>
+                    <td>@file.FileID</td>
                     <td>@file.Name</td>
                     <td>
-                        <a href = "../Files1/Index?fileName=@file.Name" style="margin-right:10px";>Current Page</a>
+                        <a href = "../Files1/Index?fileName=@file.Name" style="margin-right:10px" target="iframe_A";>Current Page</a>
                          <a href = "../Files1/PDFViewerNewTab?fileName=@file.Name" target = "_blank">New Tab</a>
                     </td>
                 </tr>
@@ -37,4 +37,4 @@
 }
 <br /><br />
 
-<embed id = "embPDF" src = "~/files/" style = "width:100px; height:1200px;"/>
+<iframe src = "files/@Model.Name" name="iframe_A" width="500" height="500"/><iframe/>
