@@ -30,7 +30,8 @@ namespace Final_LitchiLearn.Controllers
         }
         public IActionResult Topics()
         {
-            return View();
+            IEnumerable<Topics> topic = _db.Topics;
+            return View(topic);
         }
         public IActionResult Quiz()
         {

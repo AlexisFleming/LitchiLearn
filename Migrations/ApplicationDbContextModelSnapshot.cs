@@ -77,15 +77,9 @@ namespace Final_LitchiLearn.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -190,6 +184,9 @@ namespace Final_LitchiLearn.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Day")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Time")

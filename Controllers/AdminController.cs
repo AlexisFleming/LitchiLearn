@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Final_LitchiLearn.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         public IActionResult AdminDashboard()
