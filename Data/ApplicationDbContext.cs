@@ -80,8 +80,8 @@ namespace Final_LitchiLearn.Data
 
             
         }
-       // THIS GAVE AN ERROR SO YOU CAN UNCOMMENT THIS AND CHECK IT OUT public DbSet<TimeTable> TimeTable { get; set; }
+        public DbSet<TimeTable> TimeTable { get; set; }
 
-       //SAME HERE! public DbSet<Enrol> EnrolTable { get; set; }
+        public DbSet<Enrol> EnrolTable { get; set; }
     }
 }
