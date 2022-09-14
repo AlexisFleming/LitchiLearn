@@ -32,7 +32,7 @@ namespace Final_LitchiLearn.Controllers
         {
             IEnumerable<Topics> topic = _db.Topics;
             return View(topic);
-        }
+        }       
         public IActionResult Quiz()
         {
             return View();
@@ -49,7 +49,43 @@ namespace Final_LitchiLearn.Controllers
         {
             return View();
         }
-     
+        public IActionResult TopicCreate()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SubjectCreate(Topics topic)
+        {
+            if (ModelState.IsValid)//Checks to see if all the required fields have been met.
+            {
+                _db.Topics.Add(topic);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(topic);
+
+        }
+
+        public IActionResult SubjectCreate()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SubjectCreate(Subject subject)
+        {
+            if (ModelState.IsValid)//Checks to see if all the required fields have been met.
+            {
+                _db.Subjects.Add(subject);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(subject);
+
+        }
+
+
 
     }
 }

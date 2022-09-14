@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_LitchiLearn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220914093050_Lexi")]
-    partial class Lexi
+    [Migration("20220914105414_lexi")]
+    partial class lexi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

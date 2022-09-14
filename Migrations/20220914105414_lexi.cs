@@ -3,81 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Final_LitchiLearn.Migrations
 {
-    public partial class Lexi : Migration
+    public partial class lexi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Email",
-                schema: "Identity",
-                table: "User");
-
-            migrationBuilder.DropColumn(
-                name: "RoleID",
-                schema: "Identity",
-                table: "User");
-
-            migrationBuilder.DropColumn(
-                name: "UserID",
-                schema: "Identity",
-                table: "User");
-
-            migrationBuilder.DropColumn(
-                name: "Grade",
-                schema: "Identity",
-                table: "TimeTable");
-
-            migrationBuilder.RenameColumn(
-                name: "email",
-                schema: "Identity",
-                table: "User",
-                newName: "Email");
-
-            migrationBuilder.RenameColumn(
-                name: "TimeTableData",
-                schema: "Identity",
-                table: "TimeTable",
-                newName: "SubjectID");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Email",
-                schema: "Identity",
-                table: "User",
-                type: "nvarchar(256)",
-                maxLength: 256,
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Day",
-                schema: "Identity",
-                table: "TimeTable",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Subject",
-                schema: "Identity",
-                table: "TimeTable",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Time",
-                schema: "Identity",
-                table: "TimeTable",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Venue",
-                schema: "Identity",
-                table: "TimeTable",
-                type: "nvarchar(max)",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "EnrolTable",
                 schema: "Identity",
@@ -122,6 +51,22 @@ namespace Final_LitchiLearn.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Subjects", x => x.SubjectID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TimeTable",
+                schema: "Identity",
+                columns: table => new
+                {
+                    SubjectID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Day = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Time = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Venue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TimeTable", x => x.SubjectID);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,6 +192,10 @@ namespace Final_LitchiLearn.Migrations
                 schema: "Identity");
 
             migrationBuilder.DropTable(
+                name: "TimeTable",
+                schema: "Identity");
+
+            migrationBuilder.DropTable(
                 name: "UserSubject",
                 schema: "Identity");
 
@@ -265,81 +214,6 @@ namespace Final_LitchiLearn.Migrations
             migrationBuilder.DropTable(
                 name: "Questions",
                 schema: "Identity");
-
-            migrationBuilder.DropColumn(
-                name: "Day",
-                schema: "Identity",
-                table: "TimeTable");
-
-            migrationBuilder.DropColumn(
-                name: "Subject",
-                schema: "Identity",
-                table: "TimeTable");
-
-            migrationBuilder.DropColumn(
-                name: "Time",
-                schema: "Identity",
-                table: "TimeTable");
-
-            migrationBuilder.DropColumn(
-                name: "Venue",
-                schema: "Identity",
-                table: "TimeTable");
-
-            migrationBuilder.RenameColumn(
-                name: "Email",
-                schema: "Identity",
-                table: "User",
-                newName: "email");
-
-            migrationBuilder.RenameColumn(
-                name: "SubjectID",
-                schema: "Identity",
-                table: "TimeTable",
-                newName: "TimeTableData");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "email",
-                schema: "Identity",
-                table: "User",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(256)",
-                oldMaxLength: 256,
-                oldNullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Email",
-                schema: "Identity",
-                table: "User",
-                type: "nvarchar(256)",
-                maxLength: 256,
-                nullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "RoleID",
-                schema: "Identity",
-                table: "User",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.AddColumn<int>(
-                name: "UserID",
-                schema: "Identity",
-                table: "User",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.AddColumn<int>(
-                name: "Grade",
-                schema: "Identity",
-                table: "TimeTable",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
         }
     }
 }
