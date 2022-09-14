@@ -3,6 +3,12 @@
     Layout = "~/Pages/AdminDashboardLayout.cshtml";
 }
 @using Final_LitchiLearn.Models
+@model Final_LitchiLearn.Models.AdminSubject
+@*@{
+    IEnumerable<UserAccountModel> userAcc = ViewData["UserAccounts"] as IEnumerable<UserAccountModel>;
+    IEnumerable<AdminSubject> adminSub = ViewData["SubjectList"] as IEnumerable<AdminSubject>;
+}*@
+
 <!DOCTYPE HTML>
 <html>
 <head><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -18,23 +24,22 @@
     </div>
     </div>
     </div><!--End of Nav Bar-->
-
+<form method="post" asp-action="CreateSubject">
     <h4>Insert new subject into the system</h4>
         
 
         <hr />
     <div class="row">
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of Subject Name Form-Group-->
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Subject Name Form-Group-->
             <label>Subject Name</label><br />
-            <input type="text" placeholder="Enter Subject Name" name="subject" id="subject" required>
+                <input asp-for="SubjectName" class="form-control" required>
         </div><!--End of Subject Name Form-Group-->
         </div>
-        <div class="col-sm-8">
-        <div class="form-group"><!--Start of Grade Selection Form-Group-->
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Grade Selection Form-Group-->
             <label>Assign Grade to Subject</label><br />
-            <select name="grade" id="grade">
-                <option value="default">Assign Grade</option>
+                <select asp-for="SubjectGrade" class="form-control">
                 <option value="grade 4">Grade 4</option>
                 <option value="grade 5">Grade 5</option>
                 <option value="grade 6">Grade 6</option>
@@ -44,25 +49,33 @@
         </div>
     </div><!--End of Row-->
     <div class="row"><!--Start of Row-->
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of Grade Head Form-Group-->
-            <label>Select Grade Head</label><br />
-            <select name="gradehead" id="gradehead">
-                <option value="Default">Assign Grade Head</option>
-                <option value="option1">William Kleff</option>
-                <option value="option2">Pelor Yarn</option>
-                <option value="option3">Tasha Iggwilv</option>
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Grade Head Form-Group-->
+            <label>Select HOD</label><br />
+           
+                <select asp-for="SubjectGradeHead" class="form-control">
+                    <option value="William Kleff">William Kleff</option>
+                    <option value="Pelor Yarn">Pelor Yarn</option>
+                    <option value="Tasha Iggwilv">Tasha Iggwilv</option>
+                    
             </select>
         </div> <!--End of Grade Head Form-Group-->
         </div>
 
         
    </div><!--End of Row-->
+   <br />
     <div class="row"><!--Start of Row-->
         
-        <div class="col-sm-8">
-             <button type="button">Add User</button> 
+        <div class="col-sm-6">
+            <input type="submit" class="btn btn-info w-75" value="Add Subject" />
+        </div>
+        <div class="col-sm-6">
+            <a type="button" class="btn btn-danger w-75" asp-controller="Admin" asp-action="AdminDashboard">Back </a>
         </div>
     </div><!--End of Row-->
+
+
+    </form>
 
 </html>

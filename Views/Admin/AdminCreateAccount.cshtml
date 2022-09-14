@@ -5,12 +5,14 @@
 
 }
 @using Final_LitchiLearn.Models
+@model Final_LitchiLearn.Models.UserAccountModel
 <!DOCTYPE HTML>
 <html>
 <head><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/bootstrap.css" /></head>   
 
-   
+ <body>  
+
     <div class="landing-page"><!--Start of Nav Bar-->
   <div class="container">
         <div class="header-area">
@@ -21,55 +23,92 @@
       </ul>
     </div>
     </div>
-    </div><!--End of Nav Bar-->
+    </div><!--End of Nav Bar-->    
+<form method="post" asp-action="CreateAccount">@*this is the post in controller*@
         <h4>Insert new user into the system</h4>
 
         <hr />
     <div class="row">
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of First Name Form-Group-->
+        <div class="col-sm-6">
+        <div class="form"><!--Start of First Name Form-Group-->
             <label>First Name</label><br />
-            <input type="text" placeholder="Enter Firstname" name="firstname" id="firstname" required>
+            <input asp-for="FirstName" class="form-control" required>
         </div><!--End of First Name Form-Group-->
         </div>
-        <div class="col-sm-8">
-        <div class="form-group"><!--Start of Email Form-Group-->
-            <label>Email</label><br />
-            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Email Form-Group-->
+
+                <label>Last Name</label><br />
+                <input asp-for="Surname" class="form-control" required>
+
+
+           
         </div>
         </div>
     </div><!--End of Row-->
-    <div class="row"><!--Start of Row-->
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of Second Name Form-Group-->
-            <label>Last Name</label><br />
-            <input type="text" placeholder="Enter LastName" name="lastname" id="lastname" required>
+    <div class="row" ><!--Start of Row-->
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Second Name Form-Group-->
+
+                <label>User Name</label>
+                <input asp-for="Username" class="form-control" required>
+
+
         </div><!--End of Second Name Form-Group-->
         </div>
 
-        <div class="col-sm-8">
-        <div class="form-group"><!--Start of User Type Form-Group-->
+        <div class="col-sm-6">
+        <div class="form"><!--Start of User Type Form-Group-->
+
+                <label>Email</label><br />
+                <input asp-for="Email" class="form-control" required>
+
+
+        </div> <!--End of User Type Form-Group-->
+        </div>
+   </div><!--End of Row-->
+    <div class="row"><!--Start of Row-->
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Password Form-Group-->
+            <label>Password</label><br />
+                <input asp-for="Password" class="form-control" required>
+        </div><!--End of Password Form-Group-->
+        </div>
+       
+        <div class="col-sm-6">
+            <div class="form">
             <label>User Type</label><br />
-            <select name="RoleType" id="userRole">
+            <select asp-for="Usertype" class="form-control">
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
                 <option value="subCord">Subject Coordinator</option>
                 <option value="hod">HOD</option>
                 <option value="admin">Admin</option>
             </select>
-        </div> <!--End of User Type Form-Group-->
+            </div>
         </div>
-   </div><!--End of Row-->
-    <div class="row"><!--Start of Row-->
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of Password Form-Group-->
-            <label>Password</label><br />
-            <input type="text" placeholder="Enter Password" name="password" id="password" required>
-        </div><!--End of Password Form-Group-->
-        </div>
-        <div class="col-sm-8">
-             <button type="button">Add User</button> 
-        </div>
-    </div><!--End of Row-->
+    </div>
+    <br />
+  
+        <div class="row">
+            <!--Start of Row-->
+            <div class="col-sm-6">
+                <div class="form">
+                    <input type="submit" class="btn btn-info w-75" value="Create Account" />
+                </div>
+                </div>
+            <div class="col-sm-6">
+                <div class="form">
+                    <a type="button" class="btn btn-danger w-75" asp-controller="Admin" asp-action="AdminDashboard">Back </a>
+                   </div>
+                   </div>
+                   </div>
+        
+    
+       
+    
+           
 
+</form>
+</body>
 </html>
