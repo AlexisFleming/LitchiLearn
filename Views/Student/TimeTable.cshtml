@@ -6,45 +6,51 @@
 
 }
 <div class="container p-3">
-    <div class="row pt-5">
-        <div class="col-7">
+    <div class="row pt-4">
+        <div class="col-5">
          <h2 class= align="right" style="color :#ff8c69" >Time Table</h2>
         </div>
-        <div class="col-6 text-right">
+        <div class="col-5 text-right">
           
         </div>
     </div>
     <br />
+
 @if (Model.Count() >0)
 {
-    <table>
+    <table class="table table-striped" >
         <thead>
             <tr>
                 <th>
                     Subject Code
                 </th>
                 <th>
+                    Subject
+                </th>
+                <th>
                     Day
                 </th>
                 <th>
-                    Time
+                   Time
                 </th>
                 <th>
-                   Venue
+                    Venue
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             @foreach (var TimeTable in Model)
             {
-                <tr>
+                <tr style="padding:10px">
 
-                    <td width="35%">@TimeTable.SubjectID</td>
-                    <td width="35%">@TimeTable.Subject</td>
-                    <td width="35%">@TimeTable.Day</td>
-                    <td width="35%">@TimeTable.Time</td>
-                    <td width="35%">@TimeTable.Venue</td>
-                   
+                    <td width="23%">@TimeTable.SubjectID</td>
+                    <td width="23%">@TimeTable.Subject</td>
+                    <td width="23%">@TimeTable.Day</td>
+                    <td width="23%">@TimeTable.Time</td>
+                    <td width="23%">@TimeTable.Venue</td>
+                     <td width="23%">   <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
+                            <a asp-controller="Student" asp-action="MySubjectPage" asp-route-ID="" class="btn btn-danger mx-1">Go to Subject</a>
+                        </div></td>
                    
                      
                     

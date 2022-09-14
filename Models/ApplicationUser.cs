@@ -13,7 +13,7 @@ namespace Final_LitchiLearn.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string email { get; set; }
+      //  public string email { get; set; }
         public byte[] ProfilePicture { get; set; }
 
         public ICollection<UserSubject> UserSubjects { get; set; }
