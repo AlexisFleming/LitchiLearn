@@ -9,14 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Final_LitchiLearn.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
-    [Migration("20220914122302_Brandon")]
-    partial class Brandon
-========
+    [DbContext(typeof(ApplicationDbContext))]   
+
     [Migration("20220914114128_AdminAccountAndSubjectModels")]
     partial class AdminAccountAndSubjectModels
->>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
+
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,18 +122,18 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("User");
                 });
 
-<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
+
             modelBuilder.Entity("Final_LitchiLearn.Models.Attachment", b =>
-========
+
             modelBuilder.Entity("Final_LitchiLearn.Models.UserAccountModel", b =>
->>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
+
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(50)");
 
@@ -149,7 +146,7 @@ namespace Final_LitchiLearn.Migrations
                     b.HasKey("id");
 
                     b.ToTable("attachments");
-                });
+                }));
 
             modelBuilder.Entity("Final_LitchiLearn.Models.Enrol", b =>
                 {
@@ -284,7 +281,7 @@ namespace Final_LitchiLearn.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("UserID", "SubjectID");
-========
+
                     b.Property<string>("Active")
                         .HasColumnType("nvarchar(max)");
 
@@ -311,15 +308,15 @@ namespace Final_LitchiLearn.Migrations
                     b.Property<string>("Usertype")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
->>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
+
 
                     b.HasIndex("SubjectID");
 
-<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
+
                     b.ToTable("UserSubject");
-========
+
                     b.ToTable("UserAccountModels");
->>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
+
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
