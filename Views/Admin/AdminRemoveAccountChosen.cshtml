@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+}
+@using Final_LitchiLearn.Models
+@model Final_LitchiLearn.Models.UserAccountModel
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="landing-page">
+        <!--Start of Nav Bar-->
+        <div class="container">
+            <div class="header-area">
+                <div class="logo">LitchiLearn</div>
+                <ul class="links">
+                    <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard">  Home </a></li>
+                    <li>Log Out</li>
+                </ul>
+            </div>
+        </div>
+    </div><!--End of Nav Bar-->
+
+    <h4>Edit Account Record</h4>
+    <hr />
+
+    <form method="post" asp-action="AdminRemoveAccount">
+        <input type="hidden" asp-for="UserID" />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form">
+                    <!--Start of First Name Form-Group-->
+                    <label>First Name</label><br />
+                    <input asp-for="FirstName" class="form-control" required readonly>
+                </div><!--End of First Name Form-Group-->
+            </div>
+            <div class="col-sm-6">
+                <div class="form">
+                    <!--Start of Email Form-Group-->
+
+                    <label>Last Name</label><br />
+                    <input asp-for="Surname" class="form-control" required readonly>
+
+
+
+                </div>
+            </div>
+        </div><!--End of Row-->
+        <div class="row">
+            <!--Start of Row-->
+            <div class="col-sm-6">
+                <div class="form">
+                    <!--Start of Second Name Form-Group-->
+
+                    <label>User Name</label>
+                    <input asp-for="Username" class="form-control" required readonly>
+
+
+                </div><!--End of Second Name Form-Group-->
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form">
+                    <!--Start of User Type Form-Group-->
+
+                    <label>Email</label><br />
+                    <input asp-for="Email" class="form-control" required readonly>
+
+
+                </div> <!--End of User Type Form-Group-->
+            </div>
+        </div><!--End of Row-->
+        <div class="row">
+            <!--Start of Row-->
+            <div class="col-sm-6">
+                <div class="form">
+                    <!--Start of Password Form-Group-->
+                    <label>Password</label><br />
+                    <input asp-for="Password" class="form-control" required readonly>
+                </div><!--End of Password Form-Group-->
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form">
+                    <label>User Type</label><br />
+                    <input asp-for="Usertype" class="form-control" required readonly>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <!--Start of Row-->
+            <div class="col-sm-6">
+                <div class="form">
+                    <input type="submit" class="btn btn-info w-75" value="Confrim Removal" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form">
+                    <a type="button" class="btn btn-danger w-75" asp-controller="Admin" asp-action="AdminEditAccount">Back </a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+</body>
+</html>

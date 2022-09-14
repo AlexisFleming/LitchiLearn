@@ -21,9 +21,26 @@ namespace Final_LitchiLearn.Controllers
             return View();
         }
 
+
         public IActionResult ManageMySubject()
         {
-            return View();        
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ManageMySubject(Enrol obj)
+        {
+            return View();
+
+            if (ModelState.IsValid)
+            { 
+                _db.EnrolTable.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("ManageMySubject");
+            }
+
+
+                 
         }
         public IActionResult MySubjectPage()
         {

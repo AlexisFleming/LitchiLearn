@@ -2,6 +2,8 @@
     Layout = "~/Pages/AdminDashboardLayout.cshtml";
 }
 @using Final_LitchiLearn.Models
+@model IEnumerable<Final_LitchiLearn.Models.UserAccountModel>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -24,59 +26,48 @@
     </div>
     </div>
     </div><!--End of Nav Bar-->
-        
+    @if (Model.Count() > 0)
+    {
         <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>User Name</th>
-            <th>Password</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>User Type</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>8002bbee-437e-4602-8d10-a2c06a28a096</td>
-            <td>RobinB-4362</td>
-            <td>RoB1n$94</td>
-            <td>Robin</td>
-            <td>Hood</td>
-            <td>Teacher</td>
-            <td>robin@gmail.com</td>
-            <td>
-                <a class="btn btn-primary">Select Record</a>
-            </td>
-        </tr>     
-        <tr>
-            <td>9bd57745-011b-4136-8775-151adc5c00d2</td>
-            <td>PeterT-968A</td>
-            <td>Pe7er!</td>
-            <td>Peter</td>
-            <td>Pan</td>
-            <td>Student</td>
-            <td>peter@gmail.com</td>
-            <td>
-                <a class="btn btn-primary">Select Record</a>
-            </td>
-        </tr>
-        <tr>
-            <td>f8073fae-d4fc-411c-ba2f-4bc71bcb87da</td>
-            <td>schoolAdmin</td>
-            <td>Her$#ie87!</td>
-            <td>Mark</td>
-            <td>Smith</td>
-            <td>Admin</td>
-            <td>schooladmin@gmail.com</td>
-            <td>
-                <a class="btn btn-primary">Select Record</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            <thead>
+                <tr>                    
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Type</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var userAccountModel in Model)
+                { if (userAccountModel.Active == "True")
+                    {
+                        <tr>
+                            <td width="10%">@userAccountModel.Username</td>
+                        <td width="10%">@userAccountModel.Password</td>
+                        <td width="10%">@userAccountModel.FirstName</td>
+                        <td width="10%">@userAccountModel.Surname</td>
+                        <td width="10%">@userAccountModel.Usertype</td>
+                        <td width="15%">@userAccountModel.Email</td>
+                            <td width="10%"> <a asp-controller="Admin" asp-action="AdminEditAccountChosen" asp-route-ID="@userAccountModel.UserID" class="btn btn-primary">Update Record</a></td>
+                            <td width="10%"> <a asp-controller="Admin" asp-action="AdminRemoveAccountChosen" asp-route-ID="@userAccountModel.UserID" class="btn btn-danger w-75">Remove Record</a></td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Items created yet</p>
+    }
+
+   
+
+
         <br />
+    
         <div class = "row" >
         <div class="col-md-2">
          <label for="filter">Filter By:</label>
@@ -100,62 +91,11 @@
        </div>
               
        </div>
-        <hr />       
+             
 
-       <div class="row">
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of First Name Form-Group-->
-            <label>First Name</label><br />
-            <input type="text" name="firstname" id="firstname" required>
-        </div><!--End of First Name Form-Group-->
-        </div>
-        <div class="col-sm-8">
-        <div class="form-group"><!--Start of Email Form-Group-->
-            <label>Email</label><br />
-            <input type="text" name="email" id="email">
-        </div>
-        </div>
-    </div><!--End of Row-->
-    <div class="row"><!--Start of Row-->
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of Second Name Form-Group-->
-            <label>Last Name</label><br />
-            <input type="text" name="lastname" id="lastname">
-        </div><!--End of Second Name Form-Group-->
-        </div>
-
-        <div class="col-sm-8">
-        <div class="form-group"><!--Start of User Type Form-Group-->
-            <label>User Type</label><br />
-            <select name="RoleType" id="userRole">
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-                <option value="subCord">Subject Coordinator</option>
-                <option value="hod">HOD</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div> <!--End of User Type Form-Group-->
-        </div>
-   </div><!--End of Row-->
-    <div class="row"><!--Start of Row-->
-        <div class="col-sm-4">
-        <div class="form-group"><!--Start of Password Form-Group-->
-            <label>Password</label><br />
-            <input type="text" name="password" id="password" required>
-        </div><!--End of Password Form-Group-->
-        </div>
-        <div class="col-sm-8">
-             <button type="button">Confrim Changes?</button> 
-        </div>
-    </div><!--End of Row-->
-    <div class="row">
-        <div class="col-sm-4">
-        <div class="form-group">
-            <button type="button">Remove Record?</button>
-            </div>
-            </div>
-    </div>
-
+   
+      
+ 
 
     </body>
 

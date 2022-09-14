@@ -2,7 +2,7 @@
 {
     public enum Roles
     {
-        Admin,
+        SchoolAdmin,
         HOD,
         SubjectCoordinator,
         Teacher,

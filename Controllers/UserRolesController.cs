@@ -38,7 +38,7 @@ namespace Final_LitchiLearn.Controllers
         {
             return new List<string>(await _userManager.GetRolesAsync(user));
         }
-        [Authorize(Roles = "Admin")]
+        
         public async Task<IActionResult> Manage(string userId)
         {
             ViewBag.userId = userId;

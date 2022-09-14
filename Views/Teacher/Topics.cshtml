@@ -14,34 +14,44 @@
     <link rel="stylesheet" href="~/css/bootstrap.css" />
 </head>
 <body>
-    <h2>Grade 5</h2>
-    <h3>Topics</h3>
-    <hr />
-
-    <a class="btn btn-primary" href="#" role="button">Add Another Lesson</a>
-    <br /><br />
-    <div>
-        <h6><input class="custom-checkbox" type="checkbox" /> Hide Lesson</h6>
-    </div>
-
-    @foreach(var topic in Model)
+    @if (Model.Count() > 0)
     {
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">@topic.TopicName</h5>
-                        <p class="card-text">
-                            @topic.TopicDesc
-                        </p>
-                        <a href="#" class="btn btn-primary">Go to Quiz</a>
-                        <a href="#" onclick="location.href='@Url.Action("Quiz", "Teacher")'" class="btn btn-secondary">Create Quiz</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        TopicID
+                    </th>
+                    <th>
+                        TopicName
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var topic in Model)
+                {
+                    <tr>
+                        <td width="35%">@topic.TopicName</td>
+
+                        <td width="30%">
+                            <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Teacher" asp-action="Update" asp-route-ID="@topic.TopicID" class="btn btn-primary mx-1">Update</a>
+                                <a asp-controller="Teacher" asp-action="Delete" asp-route-ID="@topic.TopicID" class="btn btn-danger mx-1">Delete</a>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
     }
-    <br />   
+    else
+    {
+        <p>No Subjects Assigned to you yet.</p>
+    }
+
    
 </body>
 </html>

@@ -21,6 +21,7 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\files\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\css\" />

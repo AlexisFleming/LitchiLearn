@@ -1,4 +1,4 @@
-﻿using Final_LitchiLearn.Data;
+using Final_LitchiLearn.Data;
 using Final_LitchiLearn.Models;
 using Final_LitchiLearn.SpecialClass;
 using Microsoft.AspNetCore.Hosting;
@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace Final_LitchiLearn.Controllers
 {
+    [Authorize(Roles = "SubjectCoordinator")]
     public class SubCoController : Controller
     {
         private readonly ILogger<SubCoController> _logger;
