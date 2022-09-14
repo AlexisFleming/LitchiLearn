@@ -94,6 +94,27 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("Final_LitchiLearn.Models.Attachment", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<byte[]>("attachment")
+                        .HasColumnType("varbinary(MAX)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("attachments");
+                });
+
             modelBuilder.Entity("Final_LitchiLearn.Models.Enrol", b =>
                 {
                     b.Property<int>("EnrolID")

@@ -10,8 +10,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_LitchiLearn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220914105414_lexi")]
-    partial class lexi
+<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
+    [Migration("20220914122302_Brandon")]
+    partial class Brandon
+========
+    [Migration("20220914114128_AdminAccountAndSubjectModels")]
+    partial class AdminAccountAndSubjectModels
+>>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +26,30 @@ namespace Final_LitchiLearn.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.AdminSubject", b =>
+                {
+                    b.Property<int>("SubjectID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("SubjectGrade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectGradeHead")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubjectID");
+
+                    b.ToTable("AdminSubjectModels");
+                });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.ApplicationUser", b =>
                 {
@@ -94,6 +123,32 @@ namespace Final_LitchiLearn.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("User");
+                });
+
+<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
+            modelBuilder.Entity("Final_LitchiLearn.Models.Attachment", b =>
+========
+            modelBuilder.Entity("Final_LitchiLearn.Models.UserAccountModel", b =>
+>>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<byte[]>("attachment")
+                        .HasColumnType("varbinary(MAX)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("attachments");
                 });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.Enrol", b =>
@@ -229,10 +284,42 @@ namespace Final_LitchiLearn.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("UserID", "SubjectID");
+========
+                    b.Property<string>("Active")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usertype")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+>>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
 
                     b.HasIndex("SubjectID");
 
+<<<<<<<< HEAD:Migrations/20220914122302_Brandon.Designer.cs
                     b.ToTable("UserSubject");
+========
+                    b.ToTable("UserAccountModels");
+>>>>>>>> 0d3452cf1781de6d834b5b936e3accda4e8643c6:Migrations/20220914114128_AdminAccountAndSubjectModels.Designer.cs
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

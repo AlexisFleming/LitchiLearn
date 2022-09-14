@@ -21,6 +21,7 @@ namespace Final_LitchiLearn.Data
         public DbSet<TimeTable> TimeTable { get; set; }
         public DbSet<UserAccountModel> UserAccountModels { get; set; }
 
+        public DbSet<Attachment> attachments { get; set; }
 
 
         public DbSet<AdminSubject> AdminSubjectModels { get; set; }
