@@ -19,7 +19,11 @@ namespace Final_LitchiLearn.Data
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Enrol> EnrolTable { get; set; }
         public DbSet<TimeTable> TimeTable { get; set; }
+        public DbSet<UserAccountModel> UserAccountModels { get; set; }
 
+
+
+        public DbSet<AdminSubject> AdminSubjectModels { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
