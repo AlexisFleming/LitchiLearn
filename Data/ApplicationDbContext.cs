@@ -68,20 +68,7 @@ namespace Final_LitchiLearn.Data
             });
             
             
-            builder.Entity<UserSubject>()
-                .HasKey(us => new { us.UserID, us.SubjectID });
-
-            builder.Entity<UserSubject>()
-                .HasOne(us => us.User)
-                .WithMany(au => au.UserSubjects)
-                .HasForeignKey(us => us.UserID);
-
-            builder.Entity<UserSubject>()
-                .HasOne(us => us.Subject)
-                .WithMany() 
-                .HasForeignKey(us => us.SubjectID);
-            // If you add `public ICollection<UserBook> UserBooks { get; set; }`navigation property
-            // to Book model class then replace `.WithMany()` with `.WithMany(b => b.UserBooks)`
+           
 
             
         }

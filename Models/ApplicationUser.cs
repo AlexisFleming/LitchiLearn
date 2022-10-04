@@ -16,7 +16,7 @@ namespace Final_LitchiLearn.Models
 
         public byte[] ProfilePicture { get; set; }
 
-        public ICollection<UserSubject> UserSubjects { get; set; }
+        
     }
 
 }

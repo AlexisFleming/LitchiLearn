@@ -16,10 +16,5 @@ namespace Final_LitchiLearn.Models
         public DateTime EndDateTime { get; set; }
 
 
-
-        //one to many relationship 
-        //Quiz can have many questions
-        public int QuizID { get; set; }
-        public virtual ICollection<Quiz> Quiz { get; set; }
     }
 }

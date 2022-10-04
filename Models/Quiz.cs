@@ -14,7 +14,7 @@ namespace Final_LitchiLearn.Models
         public int TotalMarks { get; set; }
         [ForeignKey("Topic")]
         public int TopicsID { get; set; }
-        public virtual ICollection<Topics> Topics { get; set; }
+        
          
     }
 }
