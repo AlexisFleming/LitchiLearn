@@ -30,13 +30,13 @@ namespace Final_LitchiLearn.Controllers
 
             foreach (string pdfPath in Directory.EnumerateFiles(path, "*.pdf"))
             {
-                fileObj.files.Add(new FileClass());
+                fileObj.Files.Add(new FileClass()
                 {
-                    nId++;
-                    fileName = Path.GetFileName(pdfPath);
-                    path = pdfPath;
+                    FileID = nId++,
+                    Name = Path.GetFileName(pdfPath),
+                    Path = pdfPath
 
-                }
+                });
             }
 
             return View(fileObj);

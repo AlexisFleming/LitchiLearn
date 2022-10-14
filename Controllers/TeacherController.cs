@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Final_LitchiLearn.Controllers
 {
-    [Authorize(Roles = "Teacher")]
+    //[Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
         private readonly ApplicationDbContext _db;
