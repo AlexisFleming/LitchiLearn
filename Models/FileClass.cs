@@ -10,6 +10,6 @@ namespace Final_LitchiLearn.Models
         public int FileID { get; set; } = 0;
         public string Name { get; set; } = "";
         public string Path { get; set; } = "";
-        public List<FileClass> files { get; set; } = new List<FileClass>();
+        public List<FileClass> Files { get; set; } = new List<FileClass>();
     }
 }
