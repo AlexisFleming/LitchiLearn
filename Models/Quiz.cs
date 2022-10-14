@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,8 +14,13 @@ namespace Final_LitchiLearn.Models
         [Required]
         public int TotalMarks { get; set; }
         [ForeignKey("Topic")]
-        public int TopicsID { get; set; }
-        
-         
+        public int TopicID { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime StartDateTime { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime EndDateTime { get; set; }
+
+
+
     }
 }
