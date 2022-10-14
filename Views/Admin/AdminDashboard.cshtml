@@ -1,38 +1,60 @@
 ﻿@{
     ViewData["Title"] = "Dashboard";
+    //Layout = "~/Views/Shared/_TeacherLayout.cshtml";
     Layout = "~/Pages/AdminDashboardLayout.cshtml";
 
 } 
 @using Final_LitchiLearn.Models
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Dashboard"] - LitchiLearn</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
     </head>
 <body>
 <div class="landing-page">
   <div class="container">
-    <div class="header-area"><!--Start of Nav Bar-->
+@*    <div class="header-area"><!--Start of Nav Bar-->
       <div class="logo">LitchiLearn</div>
       <ul class="links">
         <li><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminDashboard" >  Home </a></li>      
         <li>Log Out</li>
       </ul>
-    </div><!--End of Nav Bar-->
-    <h4>DashBoard</h4>
-    <div class="info">
+    </div><!--End of Nav Bar-->*@
+    @*<h4>DashBoard</h4>*@
+    
       
-      <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminCreateAccount" >  Add User to System </a></button>
+@*      <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminCreateAccount" >  Add User to System </a></button>
       <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminEditAccount" >  Manage User Records </a></button>
       <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminCreateSubject" >  Add Subject to System </a></button>
       <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminEditSubject" >  Manage subjects </a></button>
       <button ><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="AdminAudit" >  Generate Audit Report </a></button>
-    </div>
-    <div class="image">
+      <button><a type="button" class="nav-link text-dark" asp-controller="Admin" asp-action="MakeAccountRequest">  Request Change </a></button>*@
+                
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                        <a asp-controller="Admin" asp-action="CreateAccountRequest"> <h4 class="card-title">Create Request</h4></a>
+                        <hr />
+                        <h5>Sampletext</h5>
+                    </div>
+
+      </div>
+   
+    @*<div class="image">
       <img src="https://i.postimg.cc/CxqfxSQP/360-F-256586027-Ja0-E6-FOAijsmd-Byqp-JCrb9c9eqre-C7-AL.jpg">
     </div>
-    <div class="clearfix"></div>
+    <div class="clearfix"></div>*@
+
+
+
+
+
   </div>
 </div>
+
 
 </body>
 </html>

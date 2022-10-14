@@ -4,14 +4,16 @@ using Final_LitchiLearn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Final_LitchiLearn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221008105537_addedRequestModel")]
+    partial class addedRequestModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,30 +139,6 @@ namespace Final_LitchiLearn.Migrations
                     b.HasKey("id");
 
                     b.ToTable("attachments");
-                });
-
-            modelBuilder.Entity("Final_LitchiLearn.Models.CurriculumModel", b =>
-                {
-                    b.Property<int>("CurrID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Grade")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("PDFfile")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CurrID");
-
-                    b.ToTable("CurriculumModel");
                 });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.Enrol", b =>

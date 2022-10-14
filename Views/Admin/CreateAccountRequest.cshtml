@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Request Account Change";
+    //Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+
+}
+@using Final_LitchiLearn.Models
+@model Final_LitchiLearn.Models.AccountRequestModel
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Dashboard"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+</head>
+<body>
+
+    <h4>Change Account Type</h4>
+
+    <div class="col">
+        <div class="row">
+        <div class="form">
+            <!--Start of First Name Form-Group-->
+            @{
+                string userName = User.Identity.Name;
+            }
+            <label>Username</label><br />
+            <input asp-for="RequestUsername" class="form-control" value="@userName" readonly>
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="row">
+            <div class="form">
+                <!--Start of First Name Form-Group-->
+              
+                <label>Username</label><br />
+                <input asp-for="RequestUsername" class="form-control" value="@userName" readonly>
+            </div><!--End of First Name Form-Group-->
+        </div>
+
+
+
+    </div>
+
+
+
+    </body>
+
+
+
+</html>

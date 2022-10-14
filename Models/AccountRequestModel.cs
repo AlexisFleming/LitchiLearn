@@ -1,0 +1,20 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Final_LitchiLearn.Models
+{
+    public class AccountRequestModel
+    {
+        [Key]
+        public int RequestID { get; set; }
+
+        [Required]
+        public string RequestUsername { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string RoleChanged { get; set; }
+
+    }
+}

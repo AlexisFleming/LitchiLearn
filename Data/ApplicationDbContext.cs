@@ -72,6 +72,7 @@ namespace Final_LitchiLearn.Data
 
             
         }
+        public DbSet<Final_LitchiLearn.Models.CurriculumModel> CurriculumModel { get; set; }
      
     }
 }

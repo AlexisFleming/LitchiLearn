@@ -3,7 +3,10 @@ using Final_LitchiLearn.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
@@ -190,6 +193,31 @@ namespace Final_LitchiLearn.Controllers
         }
 
      
+        public IActionResult CreateAccountRequest()
+        {
+            return View();
+        }
+
+
+        
+
+        public ActionResult CuriculumPage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateCuriculum(CurriculumModel curriculum)
+        {
+            if (ModelState.IsValid)
+            {
+
+                _db.CurriculumModel.Add(curriculum);
+                _db.SaveChanges();
+                return RedirectToAction("CuriculumPage");
+            }
+            return View(curriculum);
+        }
 
 
     }
