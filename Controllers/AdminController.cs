@@ -198,26 +198,42 @@ namespace Final_LitchiLearn.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult CreateAccountRequest(AccountRequestModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                obj.RequestStatus = 1;
+                _db.AccountRequestModels.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("AdminDasboard");
+            }
+            return View(obj);
+        }
 
         
 
-        public ActionResult CuriculumPage()
+        public IActionResult CuriculumPage()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult CreateCuriculum(CurriculumModel curriculum)
+        [ValidateAntiForgeryToken]
+        public IActionResult CuriculumPage(CurriculumModel curriculum)
         {
             if (ModelState.IsValid)
             {
 
                 _db.CurriculumModel.Add(curriculum);
                 _db.SaveChanges();
-                return RedirectToAction("CuriculumPage");
+                return RedirectToAction("AdminDasboard");
             }
             return View(curriculum);
         }
+
+
+
 
 
     }

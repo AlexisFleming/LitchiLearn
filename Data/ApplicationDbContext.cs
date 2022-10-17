@@ -22,7 +22,9 @@ namespace Final_LitchiLearn.Data
         public DbSet<UserAccountModel> UserAccountModels { get; set; }
 
         public DbSet<Attachment> attachments { get; set; }
+        public DbSet<CurriculumModel> CurriculumModel { get; set; }
 
+        public DbSet<AccountRequestModel> AccountRequestModels { get; set; }
 
         public DbSet<AdminSubject> AdminSubjectModels { get; set; }
 
@@ -72,7 +74,7 @@ namespace Final_LitchiLearn.Data
 
             
         }
-        public DbSet<Final_LitchiLearn.Models.CurriculumModel> CurriculumModel { get; set; }
+        
      
     }
 }

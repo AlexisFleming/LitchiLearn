@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Final_LitchiLearn.Models
 {
@@ -15,6 +18,9 @@ namespace Final_LitchiLearn.Models
 
         [Required]
         public string RoleChanged { get; set; }
+
+        [Required]
+        public int RequestStatus { get; set; }
 
     }
 }

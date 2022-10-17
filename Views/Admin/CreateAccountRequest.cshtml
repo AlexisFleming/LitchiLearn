@@ -5,6 +5,7 @@
 
 }
 @using Final_LitchiLearn.Models
+@using Microsoft.AspNetCore.Http
 @model Final_LitchiLearn.Models.AccountRequestModel
 <!DOCTYPE HTML>
 <html lang="en">
@@ -19,34 +20,58 @@
 
     <h4>Change Account Type</h4>
 
+    <form method="post" asp-action="CreateAccountRequest">
     <div class="col">
         <div class="row">
         <div class="form">
             <!--Start of First Name Form-Group-->
+           
             @{
-                string userName = User.Identity.Name;
+                        string atEmail = "@gmail.com"; 
             }
-            <label>Username</label><br />
-            <input asp-for="RequestUsername" class="form-control" value="@userName" readonly>
-        </div><!--End of First Name Form-Group-->
+                    <div class=col>
+                        <div class="row">
+                    <input asp-for="@Model.RequestUsername" class="form-control" value=@User.Identity.Name readonly />
+                    </div>
+                        <div class="row">
+                    <input asp-for="@Model.Email" class="form-control" value="@User.Identity.Name@atEmail " readonly />
+                    </div>
+                        <div class="row">
+                    <select asp-for="@Model.RoleChanged" class="form-control">                        
+                        <option value="teacher">Teacher</option>
+                        <option value="subCord">Subject Coordinator</option>
+                        <option value="hod">HOD</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    </div>
+                        <div class="row">
+                    <input type="hidden" asp-for="@Model.RequestStatus" value= "1" />
         </div>
         <div class="row">
-            <div class="form">
-                <!--Start of First Name Form-Group-->
+                            <input type="submit" class="btn btn-info w-75" value="Create Account" />
+                            
+                        </div>
+
+                    </div>
               
-                <label>Username</label><br />
-                <input asp-for="RequestUsername" class="form-control" value="@userName" readonly>
             </div><!--End of First Name Form-Group-->
         </div>
+
+
+
 
 
 
     </div>
 
 
-
+    </form>
     </body>
 
 
 
+
+
 </html>
+
+           

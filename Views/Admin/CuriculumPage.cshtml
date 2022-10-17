@@ -7,6 +7,8 @@
 
 @using Final_LitchiLearn.Models
 @model Final_LitchiLearn.Models.CurriculumModel
+<!DOCTYPE HTML>
+<html>
 <head>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/bootstrap.css" />
@@ -18,12 +20,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-controller="Admin" asp-action="CreateCuriculum">
+
+            <form method="post" asp-action="CuriculumPage">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Grade" class="control-label"></label>
                 <select asp-for="Grade" class="form-control">
-                    <option value="Null">Select A Grade</option>
+                        <option value="" disabled selected hidden>Select A Grade</option>
                     <option value="Grade 4">Grade 4</option>
                     <option value="Grade 5">Grade 5</option>
                     <option value="Grade 6">Grade 6</option>
@@ -33,8 +36,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Subject" class="control-label"></label>
-                <select asp-for="Grade" class="form-control">
-                    <option value="Null">Select A Subject</option>
+                    <select asp-for="Subject" class="form-control">
+                    <option value="" disabled selected hidden>Select A Subject</option>
                     <option value="Afrikaans">Afrikaans</option>
                     <option value="English">English</option>
                     <option value="Geography">Geography</option>
@@ -48,18 +51,23 @@
                        accept=".pdf"
                        asp-for="PDFfile"
                        class="form-control"
-                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
-                       onchange="document.getElementById('PDFfile').src = window.URL.createObjectURL(this.files[0])" />
+                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"/>
                 <span asp-validation-for="PDFfile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Add Curiculum" class="btn btn-primary" />
+                    <input type="submit" class="btn btn-info w-75" value="Add Curiculum" onclick="location.href='@Url.Action("Admin", "CuriculumPage")'" />
             </div>
         </form>
     </div>
 </div>
 
+
+
+
+
 </body>
+</html>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

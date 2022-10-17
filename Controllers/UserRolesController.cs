@@ -24,6 +24,8 @@ namespace Final_LitchiLearn.Controllers
             var userRolesViewModel = new List<UserRolesViewModel>();
             foreach (ApplicationUser user in users)
             {
+                //var accountRequest = new AccountRequestModel();
+                //if ( user.Email  == accountRequest.Email) {
                 var thisViewModel = new UserRolesViewModel();
                 thisViewModel.UserId = user.Id;
                 thisViewModel.Email = user.Email;
@@ -31,6 +33,7 @@ namespace Final_LitchiLearn.Controllers
                 thisViewModel.LastName = user.LastName;
                 thisViewModel.Roles = await GetUserRoles(user);
                 userRolesViewModel.Add(thisViewModel);
+                //}
             }
             return View(userRolesViewModel);
         }
