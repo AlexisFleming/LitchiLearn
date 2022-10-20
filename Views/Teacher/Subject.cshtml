@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/css/bootstrap.css" />
 </head>
 <body>
-<h1> Your Subjects</h1>
+<h1>Subjects</h1>
     <a asp-controller="Teacher" asp-action="SubjectCreate" class="btn btn-primary">Add Subjects</a>
     <br />
 
@@ -41,7 +41,7 @@
                         
                         <td width="30%">
                             <div class="w-100 btn-group" role="group">
-                                <a asp-controller="Teacher" asp-action="Update" asp-route-ID="@subject.SubjectID" class="btn btn-primary mx-1">Update</a>
+                                <a asp-controller="Teacher" asp-action="UpdateSubject" asp-route-ID="@subject.SubjectID" class="btn btn-primary mx-1">Update</a>
                                 <a asp-controller="Teacher" asp-action="Delete" asp-route-ID="@subject.SubjectID" class="btn btn-danger mx-1">Delete</a>
                             </div>
                         </td>

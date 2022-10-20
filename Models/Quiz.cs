@@ -15,10 +15,7 @@ namespace Final_LitchiLearn.Models
         public int TotalMarks { get; set; }
         [ForeignKey("Topic")]
         public int TopicID { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime StartDateTime { get; set; }
-        [DataType(DataType.Time)]
-        public DateTime EndDateTime { get; set; }
+        
 
 
 

@@ -107,44 +107,44 @@ namespace Final_LitchiLearn.Controllers
         }
 
 
-        public IActionResult AdminCreateSubject()
-        {
-            //IEnumerable<UserAccountModel> accountList = _db.UserAccountModels;
-            //IEnumerable<AdminSubject> subjectList = _db.AdminSubjectModels;
-            //ViewData["UserAccounts"] = accountList;
-            //ViewData["SubjectList"] = subjectList;
-            return View();
-        }
+        //public IActionResult AdminCreateSubject()
+        //{
+        //    //IEnumerable<UserAccountModel> accountList = _db.UserAccountModels;
+        //    //IEnumerable<AdminSubject> subjectList = _db.AdminSubjectModels;
+        //    //ViewData["UserAccounts"] = accountList;
+        //    //ViewData["SubjectList"] = subjectList;
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult CreateSubject (AdminSubject obj)
-        {
-            if (ModelState.IsValid)
-            {
+        //[HttpPost]
+        //public IActionResult CreateSubject (AdminSubject obj)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
                 
-                _db.AdminSubjectModels.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("AdminCreateSubject");
-            }
-            return View(obj);
-        }
+        //        _db.AdminSubjectModels.Add(obj);
+        //        _db.SaveChanges();
+        //        return RedirectToAction("AdminCreateSubject");
+        //    }
+        //    return View(obj);
+        //}
 
 
 
-        public IActionResult AdminEditSubject()
-        {
-            IEnumerable<AdminSubject> subjectList = _db.AdminSubjectModels;
-            return View(subjectList);
+        //public IActionResult AdminEditSubject()
+        //{
+        //    IEnumerable<AdminSubject> subjectList = _db.AdminSubjectModels;
+        //    return View(subjectList);
             
-        }
+        //}
 
 
-        public IActionResult AdminEditSubjectChosen(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
+        //public IActionResult AdminEditSubjectChosen(int? id)
+        //{
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
 
             var obj = _db.AdminSubjectModels.Find(id);
             if (obj == null)
@@ -155,37 +155,37 @@ namespace Final_LitchiLearn.Controllers
             return View(obj);
         }
 
-        [HttpPost]
-        public IActionResult AdminUpdateSubject(AdminSubject obj)
-        {
+        //[HttpPost]
+        //public IActionResult AdminUpdateSubject(AdminSubject obj)
+        //{
             
-            _db.AdminSubjectModels.Update(obj);
-            _db.SaveChanges();
-            return RedirectToAction("AdminEditSubject");
-        }
+        //    _db.AdminSubjectModels.Update(obj);
+        //    _db.SaveChanges();
+        //    return RedirectToAction("AdminEditSubject");
+        //}
 
-        public IActionResult AdminRemoveSubjectChosen(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
+        //public IActionResult AdminRemoveSubjectChosen(int? id)
+        //{
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var obj = _db.AdminSubjectModels.Find(id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
+        //    var obj = _db.AdminSubjectModels.Find(id);
+        //    if (obj == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(obj);
-        }
-        [HttpPost]
-        public IActionResult AdminRemoveSubject(AdminSubject obj)
-        {
-            _db.AdminSubjectModels.Remove(obj);
-            _db.SaveChanges();
-            return RedirectToAction("AdminEditSubject");
-        }
+        //    return View(obj);
+        //}
+        //[HttpPost]
+        //public IActionResult AdminRemoveSubject(AdminSubject obj)
+        //{
+        //    _db.AdminSubjectModels.Remove(obj);
+        //    _db.SaveChanges();
+        //    return RedirectToAction("AdminEditSubject");
+        //}
 
         public IActionResult AdminAudit()
         {
