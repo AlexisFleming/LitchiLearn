@@ -151,7 +151,7 @@ namespace Final_LitchiLearn.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(obj);
         }
 
@@ -211,7 +211,7 @@ namespace Final_LitchiLearn.Controllers
             return View(obj);
         }
 
-        
+
 
         public IActionResult CuriculumPage()
         {
@@ -232,7 +232,7 @@ namespace Final_LitchiLearn.Controllers
             return View(curriculum);
         }
 
-
+        
 
 
 

@@ -1,5 +1,5 @@
 ﻿using Final_LitchiLearn.Data;
-﻿using Final_LitchiLearn.Models;
+using Final_LitchiLearn.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -42,16 +42,16 @@ namespace Final_LitchiLearn.Controllers
             {foreach(var account in requests)
                 
                 if ((user.UserName == account.RequestUsername) && (account.RequestStatus ==1) )
-            {
+                {
                         ViewBag.requestedChange = account.RoleChanged;
-                var thisViewModel = new UserRolesViewModel();
+                    var thisViewModel = new UserRolesViewModel();
                         var thisAccountModel = new AccountRequestModel();
                 thisViewModel.UserId = user.Id;
-                thisViewModel.Email = user.Email;
-                thisViewModel.FirstName = user.FirstName;
-                thisViewModel.LastName = user.LastName;
-                thisViewModel.Roles = await GetUserRoles(user);
-                userRolesViewModel.Add(thisViewModel);
+                    thisViewModel.Email = user.Email;
+                    thisViewModel.FirstName = user.FirstName;
+                    thisViewModel.LastName = user.LastName;
+                    thisViewModel.Roles = await GetUserRoles(user);
+                    userRolesViewModel.Add(thisViewModel);
                         thisAccountModel.RequestID = account.RequestID;
                         thisAccountModel.RequestUsername = account.RequestUsername;
                         thisAccountModel.Email = account.Email;
@@ -59,7 +59,7 @@ namespace Final_LitchiLearn.Controllers
                         thisAccountModel.RequestStatus = account.RequestStatus;
                         userRequestViewModel.Add(thisAccountModel);
                         
-            }
+                }
             }
             return View(userRolesViewModel);
         }
@@ -99,7 +99,7 @@ namespace Final_LitchiLearn.Controllers
                 }
             
 
-            var model = new List<ManageUserRolesViewModel>();
+                    var model = new List<ManageUserRolesViewModel>();
             foreach (var role in _roleManager.Roles.ToList())
             {
                 var userRolesViewModel = new ManageUserRolesViewModel
@@ -139,7 +139,7 @@ namespace Final_LitchiLearn.Controllers
             {
                 ModelState.AddModelError("", "Cannot add selected roles to user");
                 return View(model);
-            }
+            }            
 
             return RedirectToAction("updateRequestStatus","UserRoles");
         }

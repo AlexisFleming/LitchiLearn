@@ -21,17 +21,17 @@
     <h4>Change Account Type</h4>
 
     <form method="post" asp-action="CreateAccountRequest">
-    <div class="col">
+        <div class="col">
         <div class="row">
         <div class="form">
             <!--Start of First Name Form-Group-->
            
-            @{
+                    @{
                         string sUserName;
                         sUserName = User.Identity.Name;
                         string atEmail = sUserName+"@gmail.com";
                        
-            }
+                    }
 
                     <div class="card-body">
                     <div class=col-4>
@@ -56,13 +56,13 @@
                             
                     <input type="hidden" asp-for="RequestStatus" value= "1" />
 
-        </div>
+                    </div>
 
-        <div class="row">
+                        <div class="row">
                             
                                                                             
                                 <div class="col-sm-6">
-                            <input type="submit" class="btn btn-info w-75" value="Create Account" />
+                                <input type="submit" class="btn btn-info w-75" value="Create Account" />
                                 </div>
                                 <div class="col-sm-6">
                                     <a type="button" class="btn btn-danger w-75" asp-controller="Admin" asp-action="AdminDashboard">Back </a>
@@ -72,14 +72,14 @@
                          </div>
                             
                             
-                            
+
                         </div>
 
                     </div>
-              
-            </div><!--End of First Name Form-Group-->
-        </div>
 
+        </div><!--End of First Name Form-Group-->
+        </div>
+       
 
 
 
@@ -92,7 +92,7 @@
     </body>
 
 
-
+   
 
 
 </html>
