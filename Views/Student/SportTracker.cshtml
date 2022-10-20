@@ -1,7 +1,7 @@
 ﻿@{
-    @model IEnumerable<Final_LitchiLearn.Models.TimeTable>
+    @model IEnumerable<Final_LitchiLearn.Models.Sport>
 
-    ViewData["Title"] = "Time Table";
+    ViewData["Title"] = "Sport Tracker";
     Layout = "~/Views/Shared/_StudentLayout.cshtml";
 
 }
@@ -22,10 +22,10 @@
         <thead>
             <tr>
                 <th>
-                    Subject Code
+                    Sport
                 </th>
                 <th>
-                    Subject
+                    Type
                 </th>
                 <th>
                     Day
@@ -33,21 +33,19 @@
                 <th>
                    Time
                 </th>
-                <th>
-                    Venue
-                </th>
+                
             </tr>
         </thead>
         <tbody >
-            @foreach (var TimeTable in Model)
+            @foreach (var Sport in Model)
             {
                 <tr style="padding:10px">
 
-                    <td width="23%">@TimeTable.SubjectID</td>
-                    <td width="23%">@TimeTable.Subject</td>
-                    <td width="23%">@TimeTable.Day</td>
-                    <td width="23%">@TimeTable.Time</td>
-                    <td width="23%">@TimeTable.Venue</td>
+                    <td width="23%">@Sport.NameOfSport</td>
+                    <td width="23%">@Sport.SportType</td>
+                    <td width="23%">@Sport.Day</td>
+                    <td width="23%">@Sport.Time</td>
+               @* Add buttons still *@
                      <td width="23%">   <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
                             <a asp-controller="Student" asp-action="MySubjectPage" asp-route-ID="" class="btn btn-danger mx-1">Go to Subject</a>
                         </div></td>
@@ -66,4 +64,4 @@ else
 {
     <p> Error Please contact a member of the Admin staff</p>
 }
-</div>
+
