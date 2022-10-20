@@ -6,10 +6,7 @@ namespace Final_LitchiLearn.Models
     {
         [Key]
         public int SubjectID { get; set; }
-        public string SubjectName { get; set; }
-        
-
-        
-
-    }
+        public string SubjectName { get; set; } 
+    
+    }    
 }

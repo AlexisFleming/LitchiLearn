@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace Final_LitchiLearn.Controllers
 {
-    [Authorize(Roles = "SubjectCoordinator")]
+    //[Authorize(Roles = "SubjectCoordinator")]
     public class SubCoController : Controller
     {
         private readonly ILogger<SubCoController> _logger;

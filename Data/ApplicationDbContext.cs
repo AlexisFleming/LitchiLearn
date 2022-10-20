@@ -25,8 +25,8 @@ namespace Final_LitchiLearn.Data
         public DbSet<CurriculumModel> CurriculumModel { get; set; }
 
         public DbSet<AccountRequestModel> AccountRequestModels { get; set; }
-
-        public DbSet<AdminSubject> AdminSubjectModels { get; set; }
+        public DbSet<Result> Results { get; set; }
+       
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
