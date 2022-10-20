@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using Final_LitchiLearn.Migrations;
 
 namespace Final_LitchiLearn.Models
 {
@@ -11,11 +13,12 @@ namespace Final_LitchiLearn.Models
     {
         [Key]
         public int EnrolID { get; set; }
-        
+        [ForeignKey("User")]
         public int StudentID { get; set; }
-        
+        [ForeignKey("Subject")]
         public string SubjectID { get; set; }
-
-    }
+        
+         }
+   
 
 }

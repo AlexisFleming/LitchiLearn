@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Request Account Change";
+    //Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+
+}
+
+
+@using Final_LitchiLearn.Models
+@model List<ManageUserRolesViewModel>
+
+    @if (Model.Count() > 0)
+    {
+      @foreach (var userRolesView in Model)
+      {
+          <tbody>
+
+              <tr>
+                  <td>@userRolesView.RoleId</td>
+                  <td>@userRolesView.RoleName</td>
+                 
+
+
+
+              </tr>
+
+
+
+          </tbody>
+
+      }
+
+
+
+    }
+    else
+    {
+        <p>No Items created yet</p>
+    }
+

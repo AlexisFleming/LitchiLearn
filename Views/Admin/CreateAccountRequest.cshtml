@@ -21,42 +21,65 @@
     <h4>Change Account Type</h4>
 
     <form method="post" asp-action="CreateAccountRequest">
-    <div class="col">
+        <div class="col">
         <div class="row">
         <div class="form">
             <!--Start of First Name Form-Group-->
            
-            @{
-                        string atEmail = "@gmail.com"; 
-            }
-                    <div class=col>
+                    @{
+                        string sUserName;
+                        sUserName = User.Identity.Name;
+                        string atEmail = sUserName+"@gmail.com";
+                       
+                    }
+
+                    <div class="card-body">
+                    <div class=col-4>
                         <div class="row">
-                    <input asp-for="@Model.RequestUsername" class="form-control" value=@User.Identity.Name readonly />
+                    <input asp-for="RequestUsername" class="form-control" value=@sUserName readonly /><hr />
                     </div>
                         <div class="row">
-                    <input asp-for="@Model.Email" class="form-control" value="@User.Identity.Name@atEmail " readonly />
+                    <input asp-for="Email" class="form-control" value="@atEmail " readonly /><hr />
                     </div>
                         <div class="row">
-                    <select asp-for="@Model.RoleChanged" class="form-control">                        
+                                <label>Select which type of user you would like to change to</label>
+                    <select asp-for="RoleChanged" class="form-control">
+                        <option value="" disabled selected hidden>Select User Type</option>
                         <option value="teacher">Teacher</option>
                         <option value="subCord">Subject Coordinator</option>
                         <option value="hod">HOD</option>
                         <option value="admin">Admin</option>
                     </select>
+                                <span asp-validation-for="RoleChanged" class="text-danger"></span><hr />
                     </div>
                         <div class="row">
-                    <input type="hidden" asp-for="@Model.RequestStatus" value= "1" />
-        </div>
-        <div class="row">
-                            <input type="submit" class="btn btn-info w-75" value="Create Account" />
                             
+                    <input type="hidden" asp-for="RequestStatus" value= "1" />
+
+                    </div>
+
+                        <div class="row">
+                            
+                                                                            
+                                <div class="col-sm-6">
+                                <input type="submit" class="btn btn-info w-75" value="Create Account" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <a type="button" class="btn btn-danger w-75" asp-controller="Admin" asp-action="AdminDashboard">Back </a>
+                                </div>
+
+
+                         </div>
+                            
+                            
+
                         </div>
 
                     </div>
-              
-            </div><!--End of First Name Form-Group-->
-        </div>
 
+        </div><!--End of First Name Form-Group-->
+        </div>
+       
 
 
 
@@ -69,7 +92,7 @@
     </body>
 
 
-
+   
 
 
 </html>

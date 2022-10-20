@@ -9,9 +9,9 @@ namespace Final_LitchiLearn.Models
     {
         [Key]
         public int RequestID { get; set; }
-
-        [Required]
-        public string RequestUsername { get; set; }
+     
+        [Required]     
+        public string RequestUsername { get; set; }      
 
         [Required]
         public string Email { get; set; }

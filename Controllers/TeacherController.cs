@@ -4,6 +4,8 @@ using Final_LitchiLearn.Models;
 using Final_LitchiLearn.Data;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Final_LitchiLearn.Controllers
 {
@@ -16,7 +18,7 @@ namespace Final_LitchiLearn.Controllers
         {
             _db = db;
         }
-
+        
         public IActionResult Index()
         {
             return View();
@@ -55,19 +57,19 @@ namespace Final_LitchiLearn.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SubjectCreate(Topics topic)
+        public IActionResult TopicCreate(Topics topic)
         {
             if (ModelState.IsValid)//Checks to see if all the required fields have been met.
             {
                 _db.Topics.Add(topic);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Topic");
             }
             return View(topic);
 
         }
 
-        public IActionResult SubjectCreate()
+        public IActionResult SubjectCreate() //takes us to create subject page to add subject
         {
             return View();
         }
@@ -79,11 +81,41 @@ namespace Final_LitchiLearn.Controllers
             {
                 _db.Subjects.Add(subject);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Subject");
             }
             return View(subject);
 
+        }  
+      
+
+
+        public IActionResult UpdateSubject(int? id)//Get subject we want to update
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Subjects.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateSubject(Subject sub) //post update to update the changes
+        {
+
+            _db.Subjects.Update(sub);
+            _db.SaveChanges();
+            return RedirectToAction("Subject");
+        }
+       
+
 
 
 
