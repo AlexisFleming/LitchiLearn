@@ -13,27 +13,52 @@ namespace Final_LitchiLearn.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public UserRolesController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly ApplicationDbContext _db;
+        public UserRolesController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext db)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _db = db;
         }
+
+        
+
+        public string nameSelected { get; set; }
+
+
+
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
             var userRolesViewModel = new List<UserRolesViewModel>();
+            var requests = await _db.AccountRequestModels.ToListAsync();    
+            var userRequestViewModel = new List<AccountRequestModel>();
+           
+
+            
+
             foreach (ApplicationUser user in users)
+            {foreach(var account in requests)
+                
+                if ((user.UserName == account.RequestUsername) && (account.RequestStatus ==1) )
             {
-                //var accountRequest = new AccountRequestModel();
-                //if ( user.Email  == accountRequest.Email) {
+                        ViewBag.requestedChange = account.RoleChanged;
                 var thisViewModel = new UserRolesViewModel();
+                        var thisAccountModel = new AccountRequestModel();
                 thisViewModel.UserId = user.Id;
                 thisViewModel.Email = user.Email;
                 thisViewModel.FirstName = user.FirstName;
                 thisViewModel.LastName = user.LastName;
                 thisViewModel.Roles = await GetUserRoles(user);
                 userRolesViewModel.Add(thisViewModel);
-                //}
+                        thisAccountModel.RequestID = account.RequestID;
+                        thisAccountModel.RequestUsername = account.RequestUsername;
+                        thisAccountModel.Email = account.Email;
+                        thisAccountModel.RoleChanged = account.RoleChanged;
+                        thisAccountModel.RequestStatus = account.RequestStatus;
+                        userRequestViewModel.Add(thisAccountModel);
+                        
+            }
             }
             return View(userRolesViewModel);
         }
@@ -46,12 +71,33 @@ namespace Final_LitchiLearn.Controllers
         {
             ViewBag.userId = userId;
             var user = await _userManager.FindByIdAsync(userId);
+          
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"User with Id = {userId} cannot be found";
                 return View("NotFound");
             }
             ViewBag.UserName = user.UserName;
+
+            var requests = await _db.AccountRequestModels.ToListAsync();
+            var userRequestViewModel = new List<AccountRequestModel>();
+
+            foreach (var account in requests)
+
+                if (user.UserName == account.RequestUsername) 
+                {
+                    var thisAccountModel = new AccountRequestModel();
+                    thisAccountModel.RequestID = account.RequestID;
+                    thisAccountModel.RequestUsername = account.RequestUsername;
+                    thisAccountModel.Email = account.Email;
+                    thisAccountModel.RoleChanged = account.RoleChanged;
+                    thisAccountModel.RequestStatus = account.RequestStatus;
+                    userRequestViewModel.Add(thisAccountModel);
+                    ViewBag.roleChange= (thisAccountModel.RoleChanged);
+                    
+                }
+            
+
             var model = new List<ManageUserRolesViewModel>();
             foreach (var role in _roleManager.Roles.ToList())
             {
@@ -93,9 +139,18 @@ namespace Final_LitchiLearn.Controllers
                 ModelState.AddModelError("", "Cannot add selected roles to user");
                 return View(model);
             }
-            return RedirectToAction("Index");
+
+            return RedirectToAction("updateRequestStatus","UserRoles");
         }
 
+        [HttpPost]
+        public IActionResult updateRequestStatus(AccountRequestModel requ)
+        {
+            requ.RequestStatus = 2;
+            _db.AccountRequestModels.Update(requ);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
 

@@ -7,26 +7,79 @@
     <div class="card">
         <div class="card-header">
             <h2>Manage User Roles</h2>
-            Add/Remove Roles for User / @ViewBag.UserName.
+
+            @{
+                string sRole = ViewBag.roleChange;
+                sRole = sRole.ToUpper();
+
+            }
+
+            Select Role: @sRole
         </div>
         <div class="card-body">
+
+         @* @{
+            var roleList = new List<ManageUserRolesViewModel>();
+          
+          }
+
+*@
+            
+
             @for (int i = 0; i < Model.Count; i++)
             {
-                <div class="form-check m-1">
-                    <input type="hidden" asp-for="@Model[i].RoleId" />
+                <div>
+                     @*<input type="hidden" asp-for="@Model[i].RoleId" />
                     <input type="hidden" asp-for="@Model[i].RoleName" />
                     <input asp-for="@Model[i].Selected" class="form-check-input" />
                     <label class="form-check-label" asp-for="@Model[i].Selected">
                         @Model[i].RoleName
-                    </label>
+                    </label>    *@              
+
+                    
+                    
+
+                    
+
                 </div>
             }
             <div asp-validation-summary="All" class="text-danger"></div>
+            <div>
+            <input type="hidden" asp-for="@Model[0].RoleId" />
+            <input type="hidden" asp-for="@Model[0].RoleName" />
+            <input type="radio" name="A" asp-for="@Model[0].Selected" value="True" required>
+            <label>@Model[0].RoleName</label><br>
+
+            <input type="hidden" asp-for="@Model[1].RoleId" />
+            <input type="hidden" asp-for="@Model[1].RoleName" />
+            <input type="radio" name="A" asp-for="@Model[1].Selected" value="True">
+            <label>@Model[1].RoleName</label><br>
+
+            <input type="hidden" asp-for="@Model[2].RoleId" />
+            <input type="hidden" asp-for="@Model[2].RoleName" />
+            <input type="radio" name="A" asp-for="@Model[2].Selected" value="True">
+            <label>@Model[2].RoleName</label><br>
+
+            <input type="hidden" asp-for="@Model[3].RoleId" />
+            <input type="hidden" asp-for="@Model[3].RoleName" />
+            <input type="radio" name="A" asp-for="@Model[3].Selected" value="True">
+            <label>@Model[3].RoleName</label><br>
+
+            <input type="hidden" asp-for="@Model[4].RoleId" />
+            <input type="hidden" asp-for="@Model[4].RoleName" />
+            <input type="radio" name="A" asp-for="@Model[4].Selected" value="True">
+            <label>@Model[4].RoleName</label><br>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
         </div>
+
+
+
         <div class="card-footer">
             <input type="submit" value="Update" class="btn btn-primary"
                    style="width:auto" />
-            <a asp-action="EditUser" asp-route-id="@ViewBag.userId"
+            <a asp-controller="UserRoles"  asp-action="Index" asp-route-id="@ViewBag.userId"
                class="btn btn-primary" style="width:auto">Cancel</a>
         </div>
     </div>

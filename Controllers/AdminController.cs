@@ -206,7 +206,7 @@ namespace Final_LitchiLearn.Controllers
                 obj.RequestStatus = 1;
                 _db.AccountRequestModels.Add(obj);
                 _db.SaveChanges();
-                return RedirectToAction("AdminDasboard");
+                return RedirectToAction("AdminDashBoard");
             }
             return View(obj);
         }
