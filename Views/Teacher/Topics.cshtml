@@ -14,10 +14,35 @@
     <link rel="stylesheet" href="~/css/bootstrap.css" />
 </head>
 <body>
+    <a asp-controller="Teacher" asp-action="TopicCreate" class="btn btn-primary">Add Topics</a>
+    <br />
     @if (Model.Count() > 0)
     {
-        <table class="table" style="width:100%">
-            <thead>
+        @foreach(var Topic in Model)
+        {
+            <a asp-controller="Teacher" asp-action="Update" asp-route-ID="@Topic.TopicID" class="btn btn-primary">Update</a>
+            <a asp-controller="Teacher" asp-action="Delete" asp-route-ID="@Topic.TopicID" class="btn btn-danger">Delete</a>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            @Topic.TopicName
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                           @Topic.TopicDesc
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+     
+   
+       @* <table class="table" style="width:100%">*@
+           @* <thead>
                 <tr>
                     <th>
                         TopicID
@@ -27,9 +52,9 @@
                     </th>
 
                 </tr>
-            </thead>
+            </thead>*@
 
-            <tbody>
+         @*   <tbody>
                 @foreach (var topic in Model)
                 {
                     <tr>
@@ -45,11 +70,11 @@
                     </tr>
                 }
             </tbody>
-        </table>
+        </table>*@
     }
     else
     {
-        <p>No Subjects Assigned to you yet.</p>
+        <p>No lessons yet. Stay tuned.</p>
     }
 
    
