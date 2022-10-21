@@ -146,14 +146,14 @@ namespace Final_LitchiLearn.Controllers
         //        return NotFound();
         //    }
 
-            var obj = _db.AdminSubjectModels.Find(id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
+        //    var obj = _db.AdminSubjectModels.Find(id);
+        //    if (obj == null)
+        //    {
+        //        return NotFound();
+        //    }
             
-            return View(obj);
-        }
+        //    return View(obj);
+        //}
 
         //[HttpPost]
         //public IActionResult AdminUpdateSubject(AdminSubject obj)
