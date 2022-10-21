@@ -30,16 +30,16 @@ namespace Final_LitchiLearn.Controllers
 
         public IActionResult RemoveRequest(string userName)
         {
-
-            IEnumerable<AccountRequestModel> accountList = _db.AccountRequestModels;
+            userName = Request.Query["userId"];
+            List<AccountRequestModel>accountList = _db.AccountRequestModels.Where(x => x.RequestUsername == userName).ToList();
 
             var userRequestViewModel = new List<AccountRequestModel>();
 
 
             foreach (AccountRequestModel account in accountList)
             {
-                if (account.RequestUsername == userName)
-                {
+                //if (account.RequestUsername == userName)
+                //{
                     var thisAccountModel = new AccountRequestModel();
                     thisAccountModel.RequestID = account.RequestID;
                     thisAccountModel.RequestUsername = account.RequestUsername;
@@ -47,7 +47,7 @@ namespace Final_LitchiLearn.Controllers
                     thisAccountModel.RoleChanged = account.RoleChanged;
                     thisAccountModel.RequestStatus = account.RequestStatus;
                     userRequestViewModel.Add(thisAccountModel);
-                }
+                //}
 
 
             }
@@ -58,10 +58,19 @@ namespace Final_LitchiLearn.Controllers
         }
 
         [HttpPost]
-        public IActionResult RemoveRequest(AccountRequestModel obj)
+        public IActionResult RemoveRequestPost(string USERNAME)
         {
-            obj.RoleChanged = "2";
-            _db.AccountRequestModels.Update(obj);
+            List<AccountRequestModel>accountList = _db.AccountRequestModels.Where(x => x.RequestUsername.Equals(USERNAME)).ToList();
+            foreach(var account in accountList)
+            {
+                account.RequestStatus = 2;
+                _db.AccountRequestModels.Update(account);
+
+
+            }
+
+            //obj.ResquestStatus = "2";
+            
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -91,6 +100,7 @@ namespace Final_LitchiLearn.Controllers
                     thisViewModel.FirstName = user.FirstName;
                     thisViewModel.LastName = user.LastName;
                     thisViewModel.Roles = await GetUserRoles(user);
+                        thisViewModel.UserName = user.UserName;
                     userRolesViewModel.Add(thisViewModel);
                         thisAccountModel.RequestID = account.RequestID;
                         
@@ -136,7 +146,7 @@ namespace Final_LitchiLearn.Controllers
                     thisAccountModel.RequestStatus = account.RequestStatus;
                     userRequestViewModel.Add(thisAccountModel);
                     ViewBag.roleChange= (thisAccountModel.RoleChanged);
-                    
+                    ViewBag.RequestID = thisAccountModel.RequestID;
                 }
             
 

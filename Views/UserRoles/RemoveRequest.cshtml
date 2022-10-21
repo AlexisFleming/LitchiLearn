@@ -1,18 +1,23 @@
 ﻿@{
     ViewData["Title"] = "RemoveRequest";
     Layout = "~/Pages/AdminDashboardLayout.cshtml";
+
 }
 
 @using Final_LitchiLearn.Models
 @model List<Final_LitchiLearn.Models.AccountRequestModel>
 
-<h4>Edit Account Record</h4>
+@{
+
+    string username = Model.FirstOrDefault().RequestUsername;
+}
+
+<h4>Remove Request</h4>
 <hr />
 
-<form method="post" asp-action="RemoveRequest">
+<form method="post" asp-action="RemoveRequestPost">
 
-    @if (Model.Count() > 0)
-    { 
+
      <table class="table table-striped">
             <thead>
                 <tr>
@@ -26,39 +31,32 @@
             </thead>
 
             <tbody>
+
+
+            <input name="USERNAME" type="hidden" value="@username"/>
                 @foreach (var userAccountModel in Model)
                 {
                    
                         <tr>
                             <td width="10%">@userAccountModel.RequestID</td>
+                    @*<input type="hidden" asp-for="@userAccountModel.RequestID" />*@
                             <td width="10%">@userAccountModel.RequestUsername</td>
+                   @* <input type="hidden" asp-for="@userAccountModel.RequestUsername" />*@
                         <td width="10%">@userAccountModel.Email</td>
+                    @*<input type="hidden" asp-for="@userAccountModel.Email" />*@
                         <td width="10%">@userAccountModel.RoleChanged</td>
+                    @*<input type="hidden" asp-for="@userAccountModel.RoleChanged" />*@
                         <td width="10%">@userAccountModel.RequestStatus</td>                            
-                            @*<td width="10%"> <a asp-controller="Admin" asp-action="AdminEditAccountChosen" asp-route-ID="@userAccountModel.UserID" class="btn btn-primary">Update Record</a></td>
-                            <td width="10%"> <a asp-controller="Admin" asp-action="AdminRemoveAccountChosen" asp-route-ID="@userAccountModel.UserID" class="btn btn-danger w-75">Remove Record</a></td>*@
+
+
+
                         </tr>
                     
                 }
             </tbody>
 
-
-
-
-
-
-
-
-
-
     </table>
     
-    
-    }
-
-  @*  <input type="hidden" asp-for="RequestID" />
-    <input type="hidden" asp-for="RoleChanged"/>
-    <input type="hidden" asp-for="RoleChanged" />*@
     <div class="row">
         <div class="col-sm-6">
             <div class="form">
@@ -84,7 +82,7 @@
         <!--Start of Row-->
         <div class="col-sm-6">
             <div class="form">
-                <input type="submit" class="btn btn-info w-75" value="Confrim Changes" />
+                <input type="submit" class="btn btn-info w-75" value="Confrim removal" />
             </div>
         </div>
         <div class="col-sm-6">
