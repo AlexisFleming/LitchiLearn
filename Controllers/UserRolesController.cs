@@ -84,7 +84,7 @@ namespace Final_LitchiLearn.Controllers
                 {
                         ViewBag.requestedChange = account.RoleChanged;
                         ViewBag.RequestID = account.RequestID;
-                    var thisViewModel = new UserRolesViewModel();
+                        var thisViewModel = new UserRolesViewModel();
                         var thisAccountModel = new AccountRequestModel();
                 thisViewModel.UserId = user.Id;
                     thisViewModel.Email = user.Email;

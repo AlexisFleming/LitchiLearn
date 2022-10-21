@@ -20,13 +20,19 @@
         {
             
         <tr>
+                <th>@ViewBag.RequestID</th>
             <td>@user.FirstName</td>
             <td>@user.LastName</td>
             <td>@user.Email</td>                
             @*<td>@string.Join(" , ", user.Roles.ToList())</td>*@
             <td>
                 <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Manage Roles</a>
+                   
             </td>
+            <td>
+                    <a class="btn btn-primary" asp-controller="UserRoles" asp-action="RemoveRequest" asp-route-userId=@user.UserName>Remove Request</a>
+            </td>
+
         </tr>
         }
     </tbody>

@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "RemoveRequest";
+    Layout = "~/Pages/AdminDashboardLayout.cshtml";
+}
+
+@using Final_LitchiLearn.Models
+@model List<Final_LitchiLearn.Models.AccountRequestModel>
+
+<h4>Edit Account Record</h4>
+<hr />
+
+<form method="post" asp-action="RemoveRequest">
+
+    @if (Model.Count() > 0)
+    { 
+     <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>RequestID</th>
+                    <th>RequestUsername</th>
+                    <th>Email</th>
+                    <th>RoleChanged</th>
+                    <th>RequestStatus</th>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var userAccountModel in Model)
+                {
+                   
+                        <tr>
+                            <td width="10%">@userAccountModel.RequestID</td>
+                            <td width="10%">@userAccountModel.RequestUsername</td>
+                        <td width="10%">@userAccountModel.Email</td>
+                        <td width="10%">@userAccountModel.RoleChanged</td>
+                        <td width="10%">@userAccountModel.RequestStatus</td>                            
+                            @*<td width="10%"> <a asp-controller="Admin" asp-action="AdminEditAccountChosen" asp-route-ID="@userAccountModel.UserID" class="btn btn-primary">Update Record</a></td>
+                            <td width="10%"> <a asp-controller="Admin" asp-action="AdminRemoveAccountChosen" asp-route-ID="@userAccountModel.UserID" class="btn btn-danger w-75">Remove Record</a></td>*@
+                        </tr>
+                    
+                }
+            </tbody>
+
+
+
+
+
+
+
+
+
+
+    </table>
+    
+    
+    }
+
+  @*  <input type="hidden" asp-for="RequestID" />
+    <input type="hidden" asp-for="RoleChanged"/>
+    <input type="hidden" asp-for="RoleChanged" />*@
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form">
+                <!--Start of First Name Form-Group-->
+              @*  <label>Request Username</label><br />
+                <input asp-for="RequestUsername" class="form-control" readonly>*@
+            </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-6">
+            <div class="form">
+                <!--Start of Email Form-Group-->
+
+               @* <label>User Email</label><br />
+                <input asp-for="Email" class="form-control" readonly>*@
+
+
+
+            </div>
+        </div>
+    </div><!--End of Row-->
+    
+    <div class="row">
+        <!--Start of Row-->
+        <div class="col-sm-6">
+            <div class="form">
+                <input type="submit" class="btn btn-info w-75" value="Confrim Changes" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form">
+                <a type="button" class="btn btn-danger w-75" asp-controller="UserRoles" asp-action="Index">Back </a>
+            </div>
+        </div>
+    </div>
+</form>
+
