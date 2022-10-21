@@ -1,1 +1,83 @@
-﻿
+﻿@{
+    @model IEnumerable<Final_LitchiLearn.Models.Sports>
+
+    ViewData["Title"] = "Sport Tracker";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-5">
+         <h2 class= align="right" style="color :#ff8c69" >Time Table</h2>
+        </div>
+        <div class="col-5 text-right">
+          
+        </div>
+    </div>
+    <br />
+
+
+@if (Model.Count() >0)
+{
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>
+                    Sport
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Day
+                </th>
+                <th>
+                   Time
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody >
+
+
+
+            @foreach (var Sport in Model)
+            {
+                <tr style="padding:10px">
+
+                    <td width="23%">@Sport.NameOfSport</td>
+                    <td width="23%">@Sport.SportType</td>
+                    <td width="23%">@Sport.Day</td>
+                    <td width="23%">@Sport.Time</td>
+               @* Add buttons still *@
+                     <td width="23%">   <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
+                            <a asp-controller="Student" asp-action="MySubjectPage" asp-route-ID="" class="btn btn-danger mx-1">Go to Subject</a>
+                        </div></td>
+                   
+                     
+                    
+                </tr>
+            }
+             <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
+                            <a asp-controller="Student" asp-action="StudentCreateSport" asp-route-ID="" class="btn btn-danger mx-1">Add New Sport</a>
+
+            </div>
+             <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
+                            <a asp-controller="Student" asp-action="TimeTablePdf" asp-route-ID="" class="btn btn-danger mx-1">Print TimeTable</a>
+
+            </div>
+             <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
+                            <a asp-controller="Student" asp-action="TimeTablePdf" asp-route-ID="" class="btn btn-danger mx-1">Print TimeTable</a>
+
+            </div>
+        </tbody>
+    </table>
+   
+
+}
+else
+{
+    <p> Error Please contact a member of the Admin staff</p>
+}
+
