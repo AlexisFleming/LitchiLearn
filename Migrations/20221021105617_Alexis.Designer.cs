@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_LitchiLearn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220610180926_ProfilePic")]
-    partial class ProfilePic
+    [Migration("20221021105617_Alexis")]
+    partial class Alexis
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +21,33 @@ namespace Final_LitchiLearn.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.AccountRequestModel", b =>
+                {
+                    b.Property<int>("RequestID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RequestUsername")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleChanged")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RequestID");
+
+                    b.ToTable("AccountRequestModels");
+                });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.ApplicationUser", b =>
                 {
@@ -94,6 +121,255 @@ namespace Final_LitchiLearn.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Attachment", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<byte[]>("attachment")
+                        .HasColumnType("varbinary(MAX)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("attachments");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.CurriculumModel", b =>
+                {
+                    b.Property<int>("CurrID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Grade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PDFfile")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CurrID");
+
+                    b.ToTable("CurriculumModel");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Enrol", b =>
+                {
+                    b.Property<int>("EnrolID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("StudentID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubjectID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EnrolID");
+
+                    b.ToTable("EnrolTable");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Question", b =>
+                {
+                    b.Property<int>("QuestionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Option4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QuesDesc")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<int>("QuizID")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuestionID");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Quiz", b =>
+                {
+                    b.Property<int>("QuizID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("QuizName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TopicID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalMarks")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuizID");
+
+                    b.ToTable("Quizzes");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Result", b =>
+                {
+                    b.Property<int>("ResultID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("QuestionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAnswer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ques")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ResultID");
+
+                    b.ToTable("Results");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Subject", b =>
+                {
+                    b.Property<int>("SubjectID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("SubjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubjectID");
+
+                    b.ToTable("Subjects");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.TimeTable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Day")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Venue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TimeTable");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Topics", b =>
+                {
+                    b.Property<int>("TopicID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("SubjectID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TopicDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TopicName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TopicID");
+
+                    b.ToTable("Topics");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.UserAccountModel", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Active")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usertype")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("UserAccountModels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
