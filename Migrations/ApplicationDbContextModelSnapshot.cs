@@ -47,33 +47,6 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("AccountRequestModels");
                 });
 
-            modelBuilder.Entity("Final_LitchiLearn.Models.AccountRequestModel", b =>
-                {
-                    b.Property<int>("RequestID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestStatus")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RequestUsername")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoleChanged")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RequestID");
-
-                    b.ToTable("AccountRequestModels");
-                });
-
             modelBuilder.Entity("Final_LitchiLearn.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -250,9 +223,6 @@ namespace Final_LitchiLearn.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<DateTime>("EndDateTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("QuizName")
                         .IsRequired()
