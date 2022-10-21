@@ -6,8 +6,7 @@ using System.Linq;
 using Final_LitchiLearn.Enums;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
-using Aspose.Pdf;
-using Aspose.Pdf.Text;
+
 using System;
 
 namespace Final_LitchiLearn.Controllers
@@ -41,7 +40,6 @@ namespace Final_LitchiLearn.Controllers
         [Authorize(Roles = "Student")]
         public IActionResult ManageMySubject(Enrol obj)
         {
-            return View();
 
             if (ModelState.IsValid)
             {
@@ -49,6 +47,8 @@ namespace Final_LitchiLearn.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("ManageMySubject");
             }
+            return View();
+
 
 
 
