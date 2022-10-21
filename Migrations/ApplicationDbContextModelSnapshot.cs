@@ -268,6 +268,30 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("Results");
                 });
 
+            modelBuilder.Entity("Final_LitchiLearn.Models.Sport", b =>
+                {
+                    b.Property<int>("SportID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Day")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameOfSport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SportType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SportID");
+
+                    b.ToTable("Sports");
+                });
+
             modelBuilder.Entity("Final_LitchiLearn.Models.Subject", b =>
                 {
                     b.Property<int>("SubjectID")

@@ -10,69 +10,69 @@ namespace Final_LitchiLearn.Migrations
             migrationBuilder.EnsureSchema(
                 name: "Identity");
 
-            //migrationBuilder.CreateTable(
-            //    name: "AccountRequestModels",
-            //    schema: "Identity",
-            //    columns: table => new
-            //    {
-            //        RequestID = table.Column<int>(type: "int", nullable: false)
-            //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        RequestUsername = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            //        Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            //        RoleChanged = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            //        RequestStatus = table.Column<int>(type: "int", nullable: false)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_AccountRequestModels", x => x.RequestID);
-            //    });
-
-            //migrationBuilder.CreateTable(
-            //    name: "attachments",
-            //    schema: "Identity",
-            //    columns: table => new
-            //    {
-            //        id = table.Column<int>(type: "int", nullable: false)
-            //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        FileName = table.Column<string>(type: "nvarchar(50)", nullable: true),
-            //        Description = table.Column<string>(type: "nvarchar(50)", nullable: true),
-            //        attachment = table.Column<byte[]>(type: "varbinary(MAX)", nullable: true)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_attachments", x => x.id);
-            //    });
-
-            //migrationBuilder.CreateTable(
-            //    name: "CurriculumModel",
-            //    schema: "Identity",
-            //    columns: table => new
-            //    {
-            //        CurrID = table.Column<int>(type: "int", nullable: false)
-            //            .Annotation("SqlServer:Identity", "1, 1"),
-            //        Grade = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            //        Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
-            //        PDFfile = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_CurriculumModel", x => x.CurrID);
-            //    });
-
             migrationBuilder.CreateTable(
-                name: "EnrolTable",
+                name: "AccountRequestModels",
                 schema: "Identity",
                 columns: table => new
                 {
-                    EnrolID = table.Column<int>(type: "int", nullable: false)
+                    RequestID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentID = table.Column<int>(type: "int", nullable: false),
-                    SubjectID = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    RequestUsername = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoleChanged = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RequestStatus = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EnrolTable", x => x.EnrolID);
+                    table.PrimaryKey("PK_AccountRequestModels", x => x.RequestID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "attachments",
+                schema: "Identity",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FileName = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    attachment = table.Column<byte[]>(type: "varbinary(MAX)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_attachments", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CurriculumModel",
+                schema: "Identity",
+                columns: table => new
+                {
+                    CurrID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Grade = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PDFfile = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CurriculumModel", x => x.CurrID);
+                });
+
+            //migrationBuilder.CreateTable(
+            //    name: "EnrolTable",
+            //    schema: "Identity",
+            //    columns: table => new
+            //    {
+            //        EnrolID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        StudentID = table.Column<int>(type: "int", nullable: false),
+            //        SubjectID = table.Column<string>(type: "nvarchar(max)", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_EnrolTable", x => x.EnrolID);
+            //    });
 
             migrationBuilder.CreateTable(
                 name: "Questions",
@@ -94,39 +94,39 @@ namespace Final_LitchiLearn.Migrations
                     table.PrimaryKey("PK_Questions", x => x.QuestionID);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Quizzes",
-                schema: "Identity",
-                columns: table => new
-                {
-                    QuizID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    QuizName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TotalMarks = table.Column<int>(type: "int", nullable: false),
-                    TopicID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Quizzes", x => x.QuizID);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "Quizzes",
+            //    schema: "Identity",
+            //    columns: table => new
+            //    {
+            //        QuizID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        QuizName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        TotalMarks = table.Column<int>(type: "int", nullable: false),
+            //        TopicID = table.Column<int>(type: "int", nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Quizzes", x => x.QuizID);
+            //    });
 
-            migrationBuilder.CreateTable(
-                name: "Results",
-                schema: "Identity",
-                columns: table => new
-                {
-                    ResultID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    QuestionID = table.Column<int>(type: "int", nullable: false),
-                    ques = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserAnswer = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Results", x => x.ResultID);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "Results",
+            //    schema: "Identity",
+            //    columns: table => new
+            //    {
+            //        ResultID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        QuestionID = table.Column<int>(type: "int", nullable: false),
+            //        ques = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        UserAnswer = table.Column<string>(type: "nvarchar(max)", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Results", x => x.ResultID);
+                //});
 
             //migrationBuilder.CreateTable(
             //    name: "Role",
@@ -144,52 +144,69 @@ namespace Final_LitchiLearn.Migrations
             //    });
 
             migrationBuilder.CreateTable(
-                name: "Subjects",
+                name: "Sports",
                 schema: "Identity",
                 columns: table => new
                 {
-                    SubjectID = table.Column<int>(type: "int", nullable: false)
+                    SportID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subjects", x => x.SubjectID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TimeTable",
-                schema: "Identity",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SubjectID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NameOfSport = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SportType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Day = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Time = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Venue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Time = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TimeTable", x => x.Id);
+                    table.PrimaryKey("PK_Sports", x => x.SportID);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Topics",
-                schema: "Identity",
-                columns: table => new
-                {
-                    TopicID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TopicName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TopicDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubjectID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Topics", x => x.TopicID);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "Subjects",
+            //    schema: "Identity",
+            //    columns: table => new
+            //    {
+            //        SubjectID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Subjects", x => x.SubjectID);
+            //    });
+
+            //migrationBuilder.CreateTable(
+            //    name: "TimeTable",
+            //    schema: "Identity",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        SubjectID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Day = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Time = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        Venue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_TimeTable", x => x.Id);
+            //    });
+
+            //migrationBuilder.CreateTable(
+            //    name: "Topics",
+            //    schema: "Identity",
+            //    columns: table => new
+            //    {
+            //        TopicID = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        TopicName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        TopicDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+            //        SubjectID = table.Column<int>(type: "int", nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Topics", x => x.TopicID);
+            //    });
 
             //migrationBuilder.CreateTable(
             //    name: "User",
@@ -436,6 +453,10 @@ namespace Final_LitchiLearn.Migrations
 
             migrationBuilder.DropTable(
                 name: "RoleClaims",
+                schema: "Identity");
+
+            migrationBuilder.DropTable(
+                name: "Sports",
                 schema: "Identity");
 
             migrationBuilder.DropTable(

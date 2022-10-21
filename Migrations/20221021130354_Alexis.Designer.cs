@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_LitchiLearn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221017132042_AccountRequestModel")]
-    partial class AccountRequestModel
+    [Migration("20221021130354_Alexis")]
+    partial class Alexis
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,28 +22,31 @@ namespace Final_LitchiLearn.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("Final_LitchiLearn.Models.AdminSubject", b =>
+            modelBuilder.Entity("Final_LitchiLearn.Models.AccountRequestModel", b =>
                 {
-                    b.Property<int>("SubjectID")
+                    b.Property<int>("RequestID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("SubjectGrade")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SubjectGradeHead")
+                    b.Property<int>("RequestStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RequestUsername")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SubjectName")
+                    b.Property<string>("RoleChanged")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("SubjectID");
+                    b.HasKey("RequestID");
 
-                    b.ToTable("AdminSubjectModels");
+                    b.ToTable("AccountRequestModels");
                 });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.ApplicationUser", b =>
@@ -206,7 +209,10 @@ namespace Final_LitchiLearn.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("QuesDesc")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<int>("QuizID")
+                        .HasColumnType("int");
 
                     b.HasKey("QuestionID");
 
@@ -220,15 +226,9 @@ namespace Final_LitchiLearn.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("EndDateTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("QuizName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartDateTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("TopicID")
                         .HasColumnType("int");
@@ -239,6 +239,59 @@ namespace Final_LitchiLearn.Migrations
                     b.HasKey("QuizID");
 
                     b.ToTable("Quizzes");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Result", b =>
+                {
+                    b.Property<int>("ResultID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("QuestionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserAnswer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ques")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ResultID");
+
+                    b.ToTable("Results");
+                });
+
+            modelBuilder.Entity("Final_LitchiLearn.Models.Sport", b =>
+                {
+                    b.Property<int>("SportID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Day")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameOfSport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SportType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SportID");
+
+                    b.ToTable("Sports");
                 });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.Subject", b =>
@@ -258,13 +311,18 @@ namespace Final_LitchiLearn.Migrations
 
             modelBuilder.Entity("Final_LitchiLearn.Models.TimeTable", b =>
                 {
-                    b.Property<string>("SubjectID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Day")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Subject")
+                    b.Property<string>("SubjectID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Time")
@@ -273,7 +331,7 @@ namespace Final_LitchiLearn.Migrations
                     b.Property<string>("Venue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("SubjectID");
+                    b.HasKey("Id");
 
                     b.ToTable("TimeTable");
                 });
