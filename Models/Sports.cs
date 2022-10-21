@@ -1,7 +1,10 @@
-﻿namespace Final_LitchiLearn.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Final_LitchiLearn.Models
 {
-    public class Sport
-    {   
+    public class Sports
+    {
+        [Key]
         public int SportID { get; set; }
 
         UserAccountModel UserAccount { get; set; }

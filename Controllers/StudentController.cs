@@ -89,51 +89,51 @@ namespace Final_LitchiLearn.Controllers
 
         // sport Tracker 
 
-        //public IActionResult SportTracker()
-        //{
-        //    IEnumerable<Sport> objList = _db.SportTable;
-        //return View();
+        public IActionResult SportTracker()
+        {
+            IEnumerable<Sports> objList = _db.Sports;
+            return View(objList);
 
-        //}
+        }
 
-        //public IActionResult CreateSport(Sport obj)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _db.SportTable.Add(obj);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("DisplaySport");
+        public IActionResult CreateSport(Sports obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Sports.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("DisplaySport");
 
-        //    }
-        //    return View(obj);
+            }
+            return View(obj);
 
-        //}
+        }
 
-        //public IActionResult Update(int? id)
-        //{
-        //    if (id == null || id == 0)
-        //    {
-        //        return NotFound();
-        //    }
+        public IActionResult Update(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
 
-        //    var obj = _db.SportTable.Find(id);
-        //    if (obj == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(obj);
+            var obj = _db.Sports.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
 
-        //}
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Update(Sport obj)
-        //{
-        //    _db.SportTable.Update(obj);
-        //    _db.SaveChanges();
-        //    return RedirectToAction("DisplaySport");
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Sports obj)
+        {
+            _db.Sports.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("DisplaySport");
 
-        //}
+        }
 
 
 

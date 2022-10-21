@@ -24,7 +24,7 @@ namespace Final_LitchiLearn.Data
         public DbSet<Attachment> attachments { get; set; }
         public DbSet<CurriculumModel> CurriculumModel { get; set; }
 
-        public DbSet<Sport> Sports { get; set; }
+        public DbSet<Sports> Sports { get; set; }
 
         public DbSet<AccountRequestModel> AccountRequestModels { get; set; }
         public DbSet<Result> Results { get; set; }
