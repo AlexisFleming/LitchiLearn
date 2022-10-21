@@ -18,45 +18,45 @@
 <form method="post" asp-action="RemoveRequestPost">
 
 
-     <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>RequestID</th>
-                    <th>RequestUsername</th>
-                    <th>Email</th>
-                    <th>RoleChanged</th>
-                    <th>RequestStatus</th>
-                    
-                </tr>
-            </thead>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>RequestID</th>
+                <th>RequestUsername</th>
+                <th>Email</th>
+                <th>RoleChanged</th>
+                <th>RequestStatus</th>
 
-            <tbody>
+            </tr>
+        </thead>
+
+        <tbody>
 
 
             <input name="USERNAME" type="hidden" value="@username"/>
-                @foreach (var userAccountModel in Model)
-                {
-                   
-                        <tr>
-                            <td width="10%">@userAccountModel.RequestID</td>
+            @foreach (var userAccountModel in Model)
+            {
+
+                <tr>
+                    <td width="10%">@userAccountModel.RequestID</td>
                     @*<input type="hidden" asp-for="@userAccountModel.RequestID" />*@
-                            <td width="10%">@userAccountModel.RequestUsername</td>
+                    <td width="10%">@userAccountModel.RequestUsername</td>
                    @* <input type="hidden" asp-for="@userAccountModel.RequestUsername" />*@
-                        <td width="10%">@userAccountModel.Email</td>
+                    <td width="10%">@userAccountModel.Email</td>
                     @*<input type="hidden" asp-for="@userAccountModel.Email" />*@
-                        <td width="10%">@userAccountModel.RoleChanged</td>
+                    <td width="10%">@userAccountModel.RoleChanged</td>
                     @*<input type="hidden" asp-for="@userAccountModel.RoleChanged" />*@
-                        <td width="10%">@userAccountModel.RequestStatus</td>                            
+                    <td width="10%">@userAccountModel.RequestStatus</td>
 
 
 
-                        </tr>
-                    
-                }
-            </tbody>
+                </tr>
+
+            }
+        </tbody>
 
     </table>
-    
+
     <div class="row">
         <!--Start of Row-->
         <div class="col-sm-6">
