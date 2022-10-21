@@ -1,10 +1,11 @@
-﻿{
+﻿@{
     @model IEnumerable<Final_LitchiLearn.Models.Sports>
 
     ViewData["Title"] = "Sport Tracker";
     Layout = "~/Views/Shared/_StudentLayout.cshtml";
 
 }
+
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-5">
@@ -59,7 +60,16 @@
                 </tr>
             }
              <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
+                            <a asp-controller="Student" asp-action="StudentCreateSport" asp-route-ID="" class="btn btn-danger mx-1">Add New Sport</a>
+
+            </div>
+             <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
                             <a asp-controller="Student" asp-action="TimeTablePdf" asp-route-ID="" class="btn btn-danger mx-1">Print TimeTable</a>
+
+            </div>
+             <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
+                            <a asp-controller="Student" asp-action="TimeTablePdf" asp-route-ID="" class="btn btn-danger mx-1">Print TimeTable</a>
+
             </div>
         </tbody>
     </table>

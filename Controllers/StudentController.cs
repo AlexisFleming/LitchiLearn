@@ -102,7 +102,7 @@ namespace Final_LitchiLearn.Controllers
             {
                 _db.Sports.Add(obj);
                 _db.SaveChanges();
-                return RedirectToAction("DisplaySport");
+                return RedirectToAction("SportTracker");
 
             }
             return View(obj);
@@ -135,7 +135,11 @@ namespace Final_LitchiLearn.Controllers
 
         }
 
-
+        public IActionResult StudentCreateSport()
+        { 
+        
+            return View();
+        }
 
 
 

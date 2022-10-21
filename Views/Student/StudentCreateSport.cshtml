@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Create Sport";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+
+
+}
+@using Final_LitchiLearn.Models
+@model Final_LitchiLearn.Models.Sports
+<!DOCTYPE HTML>
+<html>
+<head><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" /></head>   
+
+ <body>  
+
+    <div class="landing-page"><!--Start of Nav Bar-->
+  <div class="container">
+        <div class="header-area">
+      <div class="logo">LitchiLearn</div>
+      <ul class="links">
+        <li><a type="button" class="nav-link text-dark" asp-controller="Student" asp-action="Index" >  Home </a></li>      
+        <li>Log Out</li>
+      </ul>
+    </div>
+    </div>
+    </div><!--End of Nav Bar-->    
+<form method="post" asp-action="CreateSport">@*this is the post in controller*@
+        <h4>Add New Sport To Schedule</h4>
+
+        <hr />
+    <div class="row">
+        <div class="col-sm-6">
+        <div class="form"><!--Start of First Name Form-Group-->
+            <label>Name Of Sport</label><br />
+            <input asp-for="NameOfSport" class="form-control" required>
+        </div><!--End of First Name Form-Group-->
+        </div>
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Email Form-Group-->
+
+             <label>Type Of Sport</label><br />
+            <select asp-for="SportType" class="form-control">
+                <option value="Team">Team</option>
+                <option value="Single">Single</option>
+                
+            </select>
+
+
+           
+        </div>
+        </div>
+    </div><!--End of Row-->
+    <div class="row" ><!--Start of Row-->
+        <div class="col-sm-6">
+        <div class="form"><!--Start of Second Name Form-Group-->
+
+                <label>Day Of The Week</label>
+                <input asp-for="Day" class="form-control" required>
+
+
+        </div><!--End of Second Name Form-Group-->
+        </div>
+
+        <div class="col-sm-6">
+        <div class="form"><!--Start of User Type Form-Group-->
+
+                <label>Time</label><br />
+                <input asp-for="Time" class="form-control" required>
+
+
+        </div> <!--End of User Type Form-Group-->
+        </div>
+   </div><!--End of Row-->
+    
+       
+    <br />
+  
+        <div class="row">
+            <!--Start of Row-->
+            <div class="col-sm-6">
+                <div class="form">
+                    <input type="submit" class="btn btn-info w-75" value="Create Sport" />
+                </div>
+                </div>
+            <div class="col-sm-6">
+                <div class="form">
+                    <a type="button" class="btn btn-danger w-75" asp-controller="Student" asp-action="SportTracker">Back </a>
+                   </div>
+                   </div>
+                   </div>
+        
+    
+       
+    
+           
+
+</form>
+</body>
+</html>
