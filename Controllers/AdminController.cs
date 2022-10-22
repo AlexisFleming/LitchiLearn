@@ -9,8 +9,10 @@ using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Final_LitchiLearn.Controllers
 {
@@ -18,9 +20,12 @@ namespace Final_LitchiLearn.Controllers
     {
 
         private readonly ApplicationDbContext _db;
-
-        public AdminController(ApplicationDbContext db)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AdminController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext db)
         {
+            _roleManager = roleManager;
+            _userManager = userManager;
             _db = db;
         }
 
@@ -206,7 +211,7 @@ namespace Final_LitchiLearn.Controllers
                 obj.RequestStatus = 1;
                 _db.AccountRequestModels.Add(obj);
                 _db.SaveChanges();
-                return RedirectToAction("~/Views/Student/Index.cshtml");
+                return RedirectToAction("LogIn", "Account", new { area = "" });
             }
             return View(obj);
         }
@@ -232,7 +237,25 @@ namespace Final_LitchiLearn.Controllers
             return View(curriculum);
         }
 
-        
+        //public async Task<IActionResult> AdminReport()
+        //{
+        //    var users = await _userManager.Users.ToListAsync();
+        //    var userRolesViewModel = new List<UserRolesViewModel>();
+        //    foreach (ApplicationUser user in users)
+        //    {
+        //        var thisViewModel = new UserRolesViewModel();
+        //        thisViewModel.UserId = user.Id;
+        //        thisViewModel.Email = user.Email;
+        //        thisViewModel.FirstName = user.FirstName;
+        //        thisViewModel.LastName = user.LastName;
+        //        thisViewModel.Roles = await GetUserRoles(user);
+        //        thisViewModel.UserName = user.UserName;
+        //        userRolesViewModel.Add(thisViewModel);
+
+        //    }
+        //    return (userRolesViewModel):
+        //}
+
 
 
 

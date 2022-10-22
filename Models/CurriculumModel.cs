@@ -22,8 +22,7 @@ namespace Final_LitchiLearn.Models
         [Required]
         public string Subject { get; set; }
 
-        [Required]
-        [Display(Name = "Select File")]
+        [Required]        
         public byte[] PDFfile { get; set; }
     }
 
