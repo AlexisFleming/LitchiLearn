@@ -36,9 +36,11 @@
                     <div class="card-body">
                     <div class=col-4>
                         <div class="row">
+                            <label>Your User name</label>
                     <input asp-for="RequestUsername" class="form-control" value=@sUserName readonly /><hr />
                     </div>
                         <div class="row">
+                            <label>Your Email</label>
                     <input asp-for="Email" class="form-control" value="@atEmail " readonly /><hr />
                     </div>
                         <div class="row">
@@ -62,7 +64,7 @@
                             
                                                                             
                                 <div class="col-sm-6">
-                                <input type="submit" class="btn btn-info w-75" value="Create Account" />
+                                <input type="submit" class="btn btn-info w-75" value="Request Change" />
                                 </div>
                                 <div class="col-sm-6">
                                     <a type="button" class="btn btn-danger w-75" asp-controller="Admin" asp-action="AdminDashboard">Back </a>
