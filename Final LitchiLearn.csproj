@@ -35,6 +35,7 @@
     <Folder Include="wwwroot\lib\jquery\dist\" />
     <Folder Include="wwwroot\files\" />
     <Folder Include="wwwroot\attachment\" />
+    <Folder Include="wwwroot\moderation\" />
   </ItemGroup>
 
 </Project>
