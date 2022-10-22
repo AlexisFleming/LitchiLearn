@@ -25,6 +25,7 @@ namespace Final_LitchiLearn.Controllers
         {
             _db = db;
         }
+        [Authorize(Roles = "Student")]
         public IActionResult Index()
         {
             return View();
@@ -77,7 +78,7 @@ namespace Final_LitchiLearn.Controllers
         {
             var Renderer = new IronPdf.ChromePdfRenderer();
             //create the doc
-            using var PDF = Renderer.RenderUrlAsPdf("https://localhost:44319/Student/TimeTable");
+            using var PDF = Renderer.RenderUrlAsPdf("http://sict-iis.mandela.ac.za/19/Student/TimeTable");
 
             var contentLength = PDF.BinaryData.Length;
             Response.Headers["Content-Length"] = contentLength.ToString();
@@ -144,12 +145,13 @@ namespace Final_LitchiLearn.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(Sports obj)
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(Sports obj)
         {
            
             _db.Sports.Remove(obj);
             _db.SaveChanges();
-            return RedirectToAction("SportTracker");
+            return RedirectToAction("Index");
 
         }
 
