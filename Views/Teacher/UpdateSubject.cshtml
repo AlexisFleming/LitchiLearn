@@ -1,4 +1,4 @@
-﻿
+﻿@model Final_LitchiLearn.Models.Subject
 @{
     ViewData["Title"] = "UpdateSubject";
     Layout = "~/Views/Shared/_TeacherLayout.cshtml";
@@ -6,3 +6,32 @@
 
 <h1>UpdateSubject</h1>
 
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="UpdateSubject">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SubjectID" />
+            
+            <div class="form-group">
+                <label asp-for="SubjectName" class="control-label"></label>
+                <input asp-for="SubjectName" class="form-control" />
+                
+            </div>           
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+            <div>
+                <a asp-action="Subject" class="btn btn-danger">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

@@ -15,20 +15,23 @@
 </head>
 <body>
 <h1>Subjects</h1>
-    <a asp-controller="Teacher" asp-action="SubjectCreate" class="btn btn-primary">Add Subjects</a>
-    <br />
+<div>
+        <a asp-controller="Teacher" asp-action="SubjectCreate" class="btn btn-primary">Add Subjects</a>
+        <br />
+</div>
+    
 
 @if(Model.Count()>0)
 {
-        <table class="table" style="width:100%">
+        <table class="table table table-hover" >
             <thead>
-                <tr>
-                    <th>
-                        SubjectID
-                    </th>
+                <tr>                    
                     <th>
                         Subject
-                    </th>                    
+                    </th>  
+                    <th>
+                        Edit
+                    </th>
 
                 </tr>
             </thead>
@@ -37,12 +40,12 @@
                 @foreach (var subject in Model)
                 {
                     <tr>
-                        <td width="35%">@subject.SubjectName</td>
+                        <td >@subject.SubjectName</td>
                         
-                        <td width="30%">
-                            <div class="w-100 btn-group" role="group">
-                                <a asp-controller="Teacher" asp-action="UpdateSubject" asp-route-ID="@subject.SubjectID" class="btn btn-primary mx-1">Update</a>
-                                <a asp-controller="Teacher" asp-action="Delete" asp-route-ID="@subject.SubjectID" class="btn btn-danger mx-1">Delete</a>
+                        <td >
+                            <div >
+                                <a asp-controller="Teacher" asp-action="UpdateSubject" asp-route-ID="@subject.SubjectID" class="btn btn-primary">Update</a>
+                                <a asp-controller="Teacher" asp-action="DeleteSubject" asp-route-ID="@subject.SubjectID" class="btn btn-danger">Delete</a>
                             </div>
                         </td>
 
