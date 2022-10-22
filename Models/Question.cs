@@ -22,6 +22,8 @@ namespace Final_LitchiLearn.Models
         [ForeignKey("Quiz")]
         public int QuizID { get; set; }
 
+        public Quiz Quiz { get; set; }
+
 
 
     }
