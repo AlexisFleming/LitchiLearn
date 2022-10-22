@@ -109,21 +109,7 @@ namespace Final_LitchiLearn.Controllers
 
         }
 
-        public IActionResult Update(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-
-            var obj = _db.Sports.Find(id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            return View(obj);
-
-        }
+       
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -141,13 +127,36 @@ namespace Final_LitchiLearn.Controllers
             return View();
         }
 
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Sports.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Sports obj)
+        {
+           
+            _db.Sports.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("SportTracker");
+
+        }
+
+        
 
 
-
-
-
-
-
+      
 
 
     }
