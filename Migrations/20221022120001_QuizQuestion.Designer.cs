@@ -4,14 +4,16 @@ using Final_LitchiLearn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Final_LitchiLearn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221022120001_QuizQuestion")]
+    partial class QuizQuestion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,35 +186,6 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("EnrolTable");
                 });
 
-            modelBuilder.Entity("Final_LitchiLearn.Models.Performance", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("EngMark")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MathMark")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TechMark")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Performances");
-                });
-
             modelBuilder.Entity("Final_LitchiLearn.Models.Question", b =>
                 {
                     b.Property<int>("QuestionID")
@@ -342,30 +315,6 @@ namespace Final_LitchiLearn.Migrations
                     b.HasKey("SubjectID");
 
                     b.ToTable("Subjects");
-                });
-
-            modelBuilder.Entity("Final_LitchiLearn.Models.Tasking", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TaskingName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Taskings");
                 });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.TimeTable", b =>

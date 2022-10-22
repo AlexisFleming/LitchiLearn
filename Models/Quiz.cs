@@ -16,6 +16,8 @@ namespace Final_LitchiLearn.Models
         [ForeignKey("Topic")]
         public int TopicID { get; set; }
         
+        public Topics Topics { get; set; }
+        public ICollection<Question> Questions { get; set; }
 
 
 
