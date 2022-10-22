@@ -9,7 +9,7 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-5">
-         <h2 class= align="right" style="color :#ff8c69" >Time Table</h2>
+         <h2 class= align="right" style="color :#ff8c69" >Sport Tracker</h2>
         </div>
         <div class="col-5 text-right">
           
@@ -52,7 +52,7 @@
                     <td width="23%">@Sport.Time</td>
                @* Add buttons still *@
                      <td width="23%">   <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
-                            <a asp-controller="Student" asp-action="MySubjectPage" asp-route-ID="" class="btn btn-danger mx-1">Go to Subject</a>
+                            <a asp-controller="Student" asp-action="Delete" asp-route-ID="@Sport.SportID" class="btn btn-danger mx-1">Delete</a>
                         </div></td>
                    
                      
@@ -63,14 +63,7 @@
                             <a asp-controller="Student" asp-action="StudentCreateSport" asp-route-ID="" class="btn btn-danger mx-1">Add New Sport</a>
 
             </div>
-             <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
-                            <a asp-controller="Student" asp-action="TimeTablePdf" asp-route-ID="" class="btn btn-danger mx-1">Print TimeTable</a>
-
-            </div>
-             <div class="w-10 btn-group" style="color :#ff8c69"role="group" >
-                            <a asp-controller="Student" asp-action="TimeTablePdf" asp-route-ID="" class="btn btn-danger mx-1">Print TimeTable</a>
-
-            </div>
+            
         </tbody>
     </table>
    

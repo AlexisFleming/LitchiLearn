@@ -14,6 +14,7 @@ namespace Final_LitchiLearn.Models
         public string Email { get; set; }
         public IEnumerable<string> Roles { get; set; }
     }
+   
 
     //public class AccountRequestModel
     //{
@@ -28,7 +29,7 @@ namespace Final_LitchiLearn.Models
 
     //    [ForeignKey("Email")]
     //    public string UserEmail { get; set; }
-        
+
 
     //    [Required]
     //    public string RoleChanged { get; set; }

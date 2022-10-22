@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Final_LitchiLearn.Controllers
 {
@@ -27,7 +28,7 @@ namespace Final_LitchiLearn.Controllers
 
         public string nameSelected { get; set; }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult RemoveRequest(string userName)
         {
             userName = Request.Query["userId"];
@@ -58,6 +59,7 @@ namespace Final_LitchiLearn.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult RemoveRequestPost(string USERNAME)
         {
             List<AccountRequestModel>accountList = _db.AccountRequestModels.Where(x => x.RequestUsername.Equals(USERNAME)).ToList();
@@ -69,61 +71,61 @@ namespace Final_LitchiLearn.Controllers
 
             }
 
-            //obj.ResquestStatus = "2";
+            
             
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
             var userRolesViewModel = new List<UserRolesViewModel>();
-            var requests = await _db.AccountRequestModels.ToListAsync();    
+            var requests = await _db.AccountRequestModels.ToListAsync();
             var userRequestViewModel = new List<AccountRequestModel>();
-           
 
-            
+
+
 
             foreach (ApplicationUser user in users)
-            {foreach(var account in requests)
-                
-                if ((user.UserName == account.RequestUsername) && (account.RequestStatus ==1) )
-                {
+            {
+                foreach (var account in requests)
+
+                    if ((user.UserName == account.RequestUsername) && (account.RequestStatus == 1))
+                    {
                         ViewBag.requestedChange = account.RoleChanged;
-                        ViewBag.RequestID = account.RequestID;
                         var thisViewModel = new UserRolesViewModel();
                         var thisAccountModel = new AccountRequestModel();
-                thisViewModel.UserId = user.Id;
-                    thisViewModel.Email = user.Email;
-                    thisViewModel.FirstName = user.FirstName;
-                    thisViewModel.LastName = user.LastName;
-                    thisViewModel.Roles = await GetUserRoles(user);
-                        thisViewModel.UserName = user.UserName;
-                    userRolesViewModel.Add(thisViewModel);
+                        thisViewModel.UserId = user.Id;
+                        thisViewModel.Email = user.Email;
+                        thisViewModel.UserName = account.RequestUsername;
+                        thisViewModel.FirstName = user.FirstName;
+                        thisViewModel.LastName = user.LastName;
+                        thisViewModel.Roles = await GetUserRoles(user);
+                        userRolesViewModel.Add(thisViewModel);
                         thisAccountModel.RequestID = account.RequestID;
-                        
                         thisAccountModel.RequestUsername = account.RequestUsername;
                         thisAccountModel.Email = account.Email;
                         thisAccountModel.RoleChanged = account.RoleChanged;
                         thisAccountModel.RequestStatus = account.RequestStatus;
                         userRequestViewModel.Add(thisAccountModel);
-                        
-                }
+
+                    }
             }
             return View(userRolesViewModel);
         }
+        [Authorize(Roles = "Admin")]
         private async Task<List<string>> GetUserRoles(ApplicationUser user)
         {
             return new List<string>(await _userManager.GetRolesAsync(user));
         }
-        
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Manage(string userId)
         {
             ViewBag.userId = userId;
             var user = await _userManager.FindByIdAsync(userId);
-          
+
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"User with Id = {userId} cannot be found";
@@ -136,7 +138,7 @@ namespace Final_LitchiLearn.Controllers
 
             foreach (var account in requests)
 
-                if (user.UserName == account.RequestUsername) 
+                if (user.UserName == account.RequestUsername)
                 {
                     var thisAccountModel = new AccountRequestModel();
                     thisAccountModel.RequestID = account.RequestID;
@@ -145,12 +147,12 @@ namespace Final_LitchiLearn.Controllers
                     thisAccountModel.RoleChanged = account.RoleChanged;
                     thisAccountModel.RequestStatus = account.RequestStatus;
                     userRequestViewModel.Add(thisAccountModel);
-                    ViewBag.roleChange= (thisAccountModel.RoleChanged);
-                    ViewBag.RequestID = thisAccountModel.RequestID;
-                }
-            
+                    ViewBag.roleChange = (thisAccountModel.RoleChanged);
 
-                    var model = new List<ManageUserRolesViewModel>();
+                }
+
+
+            var model = new List<ManageUserRolesViewModel>();
             foreach (var role in _roleManager.Roles.ToList())
             {
                 var userRolesViewModel = new ManageUserRolesViewModel
@@ -171,6 +173,7 @@ namespace Final_LitchiLearn.Controllers
             return View(model);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Manage(List<ManageUserRolesViewModel> model, string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -190,34 +193,59 @@ namespace Final_LitchiLearn.Controllers
             {
                 ModelState.AddModelError("", "Cannot add selected roles to user");
                 return View(model);
-            }            
+            }
 
-            return RedirectToAction("updateRequestStatus","UserRoles");
+            return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> updateRequestStatusAsync(string userId, AccountRequestModel request)
-        //{
+       
+        public IActionResult UserReportPDF()
+        {
+            var Renderer = new IronPdf.ChromePdfRenderer();
 
-        //    var user = await _userManager.FindByIdAsync(userId);
+            
 
-        //    var requests = await _db.AccountRequestModels.ToListAsync();
-        //    var userRequestViewModel = new List<AccountRequestModel>();
+            //create the doc
+            using var PDF = Renderer.RenderUrlAsPdf("https://localhost:44319/UserRoles/AdminReports");
 
-        //    foreach (var account in requests)
+            var contentLength = PDF.BinaryData.Length;
+            Response.Headers["Content-Length"] = contentLength.ToString();
+            Response.Headers.Add("Content-Disposition", "inline; filename = TimeTableForStudent.pdf");
 
-        //        if (user.UserName == account.RequestUsername)
-        //        {
+            return File(PDF.BinaryData, "Application/pdf;");
+
+        }
 
 
-        //        }
+        public async Task<IActionResult> AdminReports()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            var userRolesViewModel = new List<UserRolesViewModel>();
+            var requests = await _db.AccountRequestModels.ToListAsync();
+            var userRequestViewModel = new List<AccountRequestModel>();
 
 
-        //    account.RequestStatus = 2;
-        //    _db.AccountRequestModels.Update(obj);
-        //    _db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+
+
+            foreach (ApplicationUser user in users)
+            {
+                foreach (var account in requests)
+
+                   
+                        ViewBag.requestedChange = account.RoleChanged;
+                        var thisViewModel = new UserRolesViewModel();                       
+                        thisViewModel.UserId = user.Id;
+                        thisViewModel.Email = user.Email;
+                        thisViewModel.FirstName = user.FirstName;
+                        thisViewModel.LastName = user.LastName;
+                        thisViewModel.UserName = user.UserName;
+                        thisViewModel.Roles = await GetUserRoles(user);
+                        userRolesViewModel.Add(thisViewModel);
+                        
+                    
+            }
+            return View(userRolesViewModel);
+        }
 
 
 
