@@ -1,0 +1,62 @@
+﻿@{
+      ViewData["Title"] = "SubCo";
+    Layout = "~/Views/SubCo/_LayoutSubCo.cshtml";
+
+}
+@model IEnumerable<Final_LitchiLearn.Models.Performance>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Student Marks: Math</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Performance" asp-action="Index" class="btn btn-primary">English</a>
+             <a asp-controller="Performance" asp-action="Technology" class="btn btn-primary">Technology</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Student Name
+                    </th>
+                    <th>
+                        Student Surname
+                    </th>
+                    <th>
+                        Mark
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var performance in Model)
+                {
+                    <tr>
+                        <td width="30%">@performance.Name</td>
+                        <td width="30%">@performance.Surname</td>
+                        <td width="30%">@performance.MathMark</td>
+                    </tr>
+                }
+                <h5 class="text-primary">Overall Performance for Subject : @Model.Average(i => i.MathMark).ToString("0.00")%</h5>
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>No Marks added yet</p>
+    }
+
+    <br />
+
+</div>
+
+
+

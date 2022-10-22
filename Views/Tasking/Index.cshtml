@@ -1,0 +1,58 @@
+﻿@{
+      ViewData["Title"] = "SubCo";
+    Layout = "~/Views/SubCo/_LayoutSubCo.cshtml";
+
+}
+@model IEnumerable<Final_LitchiLearn.Models.Tasking>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Task to be Completed in this Year</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Tasking" asp-action="Create" class="btn btn-primary">Create New Task</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Task Name
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Status
+                    </th>
+               </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var tasking in Model)
+                {
+                    <tr>
+                        <td width="30%">@tasking.TaskingName</td>
+                        <td width="30%">@tasking.Date</td>
+                        <td width="30%">@tasking.Status</td>
+                        <td width="30%"><div class="w-100 btn-group" role="group">
+                                <a asp-controller="Tasking" asp-action="Update" asp-route-ID="@tasking.ID" class="btn btn-primary mx-1">Update</a>
+                            </div>
+                            </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Tasks created yet</p>
+    }
+</div>
+
+

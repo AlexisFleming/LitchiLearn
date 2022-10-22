@@ -6,6 +6,7 @@ namespace Final_LitchiLearn.Models
     {
         [Key]
         public int SubjectID { get; set; }
+        [Required(ErrorMessage ="Please enter the subject name.")]
         public string SubjectName { get; set; } 
     
     }    
