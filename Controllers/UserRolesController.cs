@@ -28,7 +28,7 @@ namespace Final_LitchiLearn.Controllers
 
         public string nameSelected { get; set; }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult RemoveRequest(string userName)
         {
             userName = Request.Query["userId"];
@@ -59,6 +59,7 @@ namespace Final_LitchiLearn.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult RemoveRequestPost(string USERNAME)
         {
             List<AccountRequestModel>accountList = _db.AccountRequestModels.Where(x => x.RequestUsername.Equals(USERNAME)).ToList();
@@ -76,7 +77,7 @@ namespace Final_LitchiLearn.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -114,11 +115,12 @@ namespace Final_LitchiLearn.Controllers
             }
             return View(userRolesViewModel);
         }
+        [Authorize(Roles = "Admin")]
         private async Task<List<string>> GetUserRoles(ApplicationUser user)
         {
             return new List<string>(await _userManager.GetRolesAsync(user));
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Manage(string userId)
         {
             ViewBag.userId = userId;
@@ -171,6 +173,7 @@ namespace Final_LitchiLearn.Controllers
             return View(model);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Manage(List<ManageUserRolesViewModel> model, string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
