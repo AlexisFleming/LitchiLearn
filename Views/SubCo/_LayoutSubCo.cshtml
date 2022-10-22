@@ -1,220 +1,54 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>@ViewData["Title"] - LitchiLearn</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel='stylesheet'
-    href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="~/css/SubCoStyle2.css">
-  <link rel="stylesheet" href="~/css/SubCoStyle.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LitchiLearn</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
 </head>
 <body>
-  <!-- partial:index.partial.html -->
-  <div data-component="navbar">
-
-    <nav class="navbar p-0 fixed-top bg-primary">
-      <div><a class="navbar-brand px-1" href="/SubCo"><img src="~/Images/watermelon-seeds.gif" class="d-inline-block mt-1" alt="Logo"
-            height="40"></a>
-        <div class="right-links float-right mr-4">
-          <a href="#" class="home"><i class="fa fa-home mr-3"></i></a>
-          <div class="d-inline dropdown rounded-0 mx-3">
-            <a class="dropdown-toggle" id="tools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              href="#"><i class="fa fa-wrench" aria-hidden="true"></i></a>
-            <div class="dropdown-menu dropdown-menu-right rounded-0 text-center" aria-labelledby="tools">
-              <a class="dropdown-item px-2" href="#">Recompile CSS</a>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="SubCo" asp-action="Index">
+                    <img src="~/Images/Litchi.jpg" width="30" height="24" class="d-inline-block align-text-top"/>LitchiLearn</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Performance" asp-action="Index">View Subject Performance</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Tasking" asp-action="Index">View Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="SubCo" asp-action="Student">My Students</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
             </div>
-          </div>
-          <!-- /.dropdown -->
-
-          <div class="d-inline dropdown mr-3">
-            <a class="dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" href="#"><span>10</span><i class="fa fa-bell"></i></a>
-            <div class="dropdown-menu dropdown-menu-right rounded-0 pt-0" aria-labelledby="notifications">
-              <div class="list-group">
-                <div class="lg">
-                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-
-                    <h5 class="mb-1">How to Generate Seller Leads For $0.88 Using...</h5>
-                    <p class="mb-0">3 October 2016 | 9:58 pm</p>
-                  </a>
-
-                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <h5 class="mb-1">How To Get More Listings With Strategic...</h5>
-                    <p class="mb-0">16 August 2016 | 8:26 pm</p>
-                  </a>
-
-                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <h5 class="mb-1">Top 10 Real Estate Marketing Tools</h5>
-                    <p class="mb-0">2 August 2016 | 10:25 pm</p>
-                  </a>
-                </div> <!-- /.lg -->
-              </div> <!-- /.list group -->
-            </div> <!-- /.dropdown-menu -->
-          </div> <!-- /.dropdown -->
-
-          <div class="d-inline dropdown mr-3">
-            <a class="dropdown-toggle" id="messages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              href="#"><i class="fa fa-envelope"></i></a>
-            <div class="dropdown-menu dropdown-menu-right rounded-0 text-center" aria-labelledby="messages">
-              <a class="dropdown-item">There are no new messages</a>
-            </div> <!-- /.dropdown-menu -->
-          </div> <!-- /.dropdown -->
-          <div class="d-inline dropdown">
-            <a class="dropdown-toggle" id="messages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-              href="#">
-              <img src="http://1.gravatar.com/avatar/47db31bd2e0b161008607d84c74305b5?s=96&d=mm&r=g">
-            </a>
-            <div class="dropdown-menu dropdown-menu-right rounded-0" aria-labelledby="messages">
-              <a class="dropdown-item" href="#">Edit my profile</a>
-              <a class="dropdown-item" href="#">Log Out</a>
-            </div> <!-- /.dropdown-menu -->
-          </div> <!-- /.dropdown -->
-        </div> <!-- /.right-links -->
-      </div>
-    </nav>
-  </div>
-  <!-- END TOP NAVBAR -->
-
-  <div data-component="sidebar">
-    <div class="sidebar">
-      <ul class="list-group flex-column d-inline-block first-menu bg-primary">
-        <li class="list-group-item pl-3 py-2">
-          <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span
-                class="ml-2 align-middle">Home</span></i></a>
-          <ul class="list-group flex-column d-inline-block submenu">
-            <li class="list-group-item pl-4">
-              <a href="https://localhost:44319/SubCo" class="">Dashboard</a>
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="">SEO</a>
-            </li>
-          </ul>
-          <!-- /.submenu -->
-        </li>
-        <!-- /.list-group-item -->
-
-        <li class="list-group-item pl-3 py-2">
-          <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Website</span></i></a>
-          <ul class="list-group flex-column d-inline-block submenu">
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Posts</a>
-
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Blog Assist</a>
-
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Pages</a>
-
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Area Content</a>
-
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Manual Listings</a>
-
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Testimonials</a>
-
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Team Members</a>
-
-          </ul> <!-- /.submenu -->
-        </li> <!-- /.list-group-item -->
-        <li class="list-group-item pl-3 py-2">
-          <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Settings</span></i></a>
-          <ul class="list-group flex-column d-inline-block submenu">
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Users</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">AgentFire Settings</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Grids Settings</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Plugin Settings</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">WordPress Settings</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Re-Order</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Site Appearance</a>
-
-            </li>
-          </ul>
-
-        </li>
-
-        <li class="list-group-item pl-3 py-2">
-          <a href="#"><i class="fa fa-user-o" aria-hidden="true"><span class="ml-2 align-middle">Support</span></i></a>
-          <ul class="list-group flex-column d-inline-block submenu">
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Training</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Tutorials</a>
-
-            </li>
-            <li class="list-group-item pl-4">
-              <a href="#" class="">Ask a Question</a>
-          </ul>
-        </li>
-      </ul>
-      </li>
-      </ul>
-    </div>
-    <!-- /.first-menu -->
-    <!-- /.sidebar -->
-  </div>
-  <!-- END OF SIDEBAR -->
-  
-  <div class="wp-content">
-    <div class="container-fluid">
-      <!-- Background image
-      <div class="p-5 text-center bg-image" style="background-image:url('.png');height: 150px;">
-        <div class="mask" style="background-color: rgba(27, 233, 54, 0.3);">
-          <div class="d-flex justify-content-center align-items-center h-100"> -->
-           <!-- END OF SIDEBAR   
-        <div class="text-white">
-        <h1 class="mb-3">Welcome to your dashboard</h1>
-        <h4 class="mb-3">Subheading</h4>
-         --> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class = "container-fluid1">
-      <div class="d-flex justify-content-center align-items-center h-100">       
-    <div class="text-white">
-      </div>
-    </div>
-    
-  <!-- End banner-->
-  <!--Container2-->
-  
-   <div class="container">
+        </nav>
+    </header>
+    <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-  <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'></script>
 
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Final_LitchiLearn - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" ></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>

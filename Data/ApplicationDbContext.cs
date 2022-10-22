@@ -28,8 +28,10 @@ namespace Final_LitchiLearn.Data
 
         public DbSet<AccountRequestModel> AccountRequestModels { get; set; }
         public DbSet<Result> Results { get; set; }
-       
 
+        public DbSet<Tasking> Taskings { get; set; }
+        public DbSet<Performance> Performances { get; set; }
+        //public DbSet<AttachmentFile> AttachmentFile { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
