@@ -9,10 +9,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Final_LitchiLearn.Controllers
 {
-    //[Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -21,20 +22,14 @@ namespace Final_LitchiLearn.Controllers
         {
             _db = db;
         }
-        
+
         public IActionResult Index()
         {
             return View();
         }
-        
+
         public IActionResult Subject()
-        {
-            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //IEnumerable<Subject> sub = new List<Subject>();
-
-            //sub = _db.Subjects.Where(x => x.ApplicationUserId == userId);
-
-            /*return View(sub)*/;
+        {           
             //load subjects to the Subject Page
             IEnumerable<Subject> sub = _db.Subjects;
             return View(sub);
@@ -43,10 +38,11 @@ namespace Final_LitchiLearn.Controllers
         {
             IEnumerable<Topics> topic = _db.Topics;
             return View(topic);
-        }       
+        }
         public IActionResult Quiz()
         {
-            return View();
+            IEnumerable<Quiz> quiz = _db.Quizzes;
+            return View(quiz);
         }
         public IActionResult Student()
         {
@@ -94,8 +90,8 @@ namespace Final_LitchiLearn.Controllers
             }
             return View(subject);
 
-        }  
-      
+        }
+
 
 
         public IActionResult UpdateSubject(int? id)//Get subject we want to update
@@ -150,12 +146,63 @@ namespace Final_LitchiLearn.Controllers
         }
         public IActionResult CreateQuiz()
         {
+            PopulateTopicDropDownList();
             return View();
+        }
+        private void PopulateTopicDropDownList(object selectedTopic = null)
+        {
+            var topicQuery = from t in _db.Topics
+                             orderby t.TopicName
+                             select t;
+            ViewBag.TopicID = new SelectList(topicQuery.AsNoTracking(), "TopicID", "TopicName", selectedTopic);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateQuiz([Bind("QuizID,QuizName,TotalMarks,TopicID")] Quiz quiz)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Add(quiz);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Quiz");
+            }
+            PopulateTopicDropDownList(quiz.TopicID);
+            return View(quiz);
+        }
+        
+        public IActionResult Questions()
+        {
+            IEnumerable<Question> quiz = _db.Questions;
+            return View(quiz);
+        }
+        public IActionResult QuesCreate()
+        {
+            PopulateQuiz();
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> QuesCreate([Bind("QuestionID,QuesDesc,Answer,Option1,Option2,Option3,Option4,QuizID")]Question ques)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Add(ques);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Question");
+            }
+            PopulateQuiz(ques.QuizID);
+            return View(ques);
+
+        }
+        private void PopulateQuiz(object selectedQuiz = null)
+        {
+            var quizQuery = from q in _db.Quizzes
+                             orderby q.QuizName
+                             select q;
+            ViewBag.QuizID = new SelectList(quizQuery.AsNoTracking(), "QuizID", "QuizName", selectedQuiz);
         }
 
 
-
-
-
     }
+
 }

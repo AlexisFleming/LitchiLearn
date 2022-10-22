@@ -4,14 +4,16 @@ using Final_LitchiLearn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Final_LitchiLearn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221022080006_rolefix")]
+    partial class rolefix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,35 +186,6 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("EnrolTable");
                 });
 
-            modelBuilder.Entity("Final_LitchiLearn.Models.Performance", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("EngMark")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MathMark")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TechMark")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Performances");
-                });
-
             modelBuilder.Entity("Final_LitchiLearn.Models.Question", b =>
                 {
                     b.Property<int>("QuestionID")
@@ -243,8 +216,6 @@ namespace Final_LitchiLearn.Migrations
 
                     b.HasKey("QuestionID");
 
-                    b.HasIndex("QuizID");
-
                     b.ToTable("Questions");
                 });
 
@@ -262,15 +233,10 @@ namespace Final_LitchiLearn.Migrations
                     b.Property<int>("TopicID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TopicsTopicID")
-                        .HasColumnType("int");
-
                     b.Property<int>("TotalMarks")
                         .HasColumnType("int");
 
                     b.HasKey("QuizID");
-
-                    b.HasIndex("TopicsTopicID");
 
                     b.ToTable("Quizzes");
                 });
@@ -336,36 +302,11 @@ namespace Final_LitchiLearn.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("SubjectName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SubjectID");
 
                     b.ToTable("Subjects");
-                });
-
-            modelBuilder.Entity("Final_LitchiLearn.Models.Tasking", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TaskingName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Taskings");
                 });
 
             modelBuilder.Entity("Final_LitchiLearn.Models.TimeTable", b =>
@@ -406,8 +347,7 @@ namespace Final_LitchiLearn.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TopicDesc")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TopicName")
                         .HasColumnType("nvarchar(max)");
@@ -587,26 +527,6 @@ namespace Final_LitchiLearn.Migrations
                     b.ToTable("UserTokens");
                 });
 
-            modelBuilder.Entity("Final_LitchiLearn.Models.Question", b =>
-                {
-                    b.HasOne("Final_LitchiLearn.Models.Quiz", "Quiz")
-                        .WithMany("Questions")
-                        .HasForeignKey("QuizID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Quiz");
-                });
-
-            modelBuilder.Entity("Final_LitchiLearn.Models.Quiz", b =>
-                {
-                    b.HasOne("Final_LitchiLearn.Models.Topics", "Topics")
-                        .WithMany("Quizzes")
-                        .HasForeignKey("TopicsTopicID");
-
-                    b.Navigation("Topics");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -656,16 +576,6 @@ namespace Final_LitchiLearn.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Final_LitchiLearn.Models.Quiz", b =>
-                {
-                    b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("Final_LitchiLearn.Models.Topics", b =>
-                {
-                    b.Navigation("Quizzes");
                 });
 #pragma warning restore 612, 618
         }
