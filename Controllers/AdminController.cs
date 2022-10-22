@@ -29,7 +29,7 @@ namespace Final_LitchiLearn.Controllers
             _db = db;
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminDashboard()
         {
             return View();
@@ -197,7 +197,7 @@ namespace Final_LitchiLearn.Controllers
             return View();
         }
 
-     
+        [Authorize(Roles = "Student")]
         public IActionResult CreateAccountRequest()
         {
             return View();
