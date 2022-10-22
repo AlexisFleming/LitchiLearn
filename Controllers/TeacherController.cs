@@ -6,6 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.Linq;
 
 namespace Final_LitchiLearn.Controllers
 {
@@ -26,6 +29,12 @@ namespace Final_LitchiLearn.Controllers
         
         public IActionResult Subject()
         {
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //IEnumerable<Subject> sub = new List<Subject>();
+
+            //sub = _db.Subjects.Where(x => x.ApplicationUserId == userId);
+
+            /*return View(sub)*/;
             //load subjects to the Subject Page
             IEnumerable<Subject> sub = _db.Subjects;
             return View(sub);
@@ -63,7 +72,7 @@ namespace Final_LitchiLearn.Controllers
             {
                 _db.Topics.Add(topic);
                 _db.SaveChanges();
-                return RedirectToAction("Topic");
+                return RedirectToAction("Topics");
             }
             return View(topic);
 
@@ -114,7 +123,36 @@ namespace Final_LitchiLearn.Controllers
             _db.SaveChanges();
             return RedirectToAction("Subject");
         }
-       
+        public IActionResult UpdateTopic(int? id)//Get subject we want to update
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Topics.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateTopic(Topics topic) //post update to update the changes
+        {
+
+            _db.Topics.Update(topic);
+            _db.SaveChanges();
+            return RedirectToAction("Topics");
+        }
+        public IActionResult CreateQuiz()
+        {
+            return View();
+        }
+
 
 
 

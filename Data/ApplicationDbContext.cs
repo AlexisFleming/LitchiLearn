@@ -69,10 +69,7 @@ namespace Final_LitchiLearn.Data
             builder.Entity<IdentityUserToken<string>>(entity =>
             {
                 entity.ToTable("UserTokens");
-            });
-            
-            
-           
+            });     
 
             
         }
