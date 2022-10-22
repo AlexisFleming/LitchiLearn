@@ -32,5 +32,44 @@ namespace Final_LitchiLearn.Controllers
             IEnumerable<Performance> objList = _db.Performances;
             return View(objList);
         }
+        public IActionResult EngPDF()
+        {
+            var Renderer = new IronPdf.ChromePdfRenderer();
+            //create the doc
+            using var PDF = Renderer.RenderUrlAsPdf("http://sict-iis.mandela.ac.za/19/Performance/Index");
+
+            var contentLength = PDF.BinaryData.Length;
+            Response.Headers["Content-Length"] = contentLength.ToString();
+            Response.Headers.Add("Content-Disposition", "inline; filename = TimeTableForStudent.pdf");
+
+            return File(PDF.BinaryData, "Application/pdf;");
+
+        }
+        public IActionResult MathPDF()
+        {
+            var Renderer = new IronPdf.ChromePdfRenderer();
+            //create the doc
+            using var PDF = Renderer.RenderUrlAsPdf("http://sict-iis.mandela.ac.za/19/Performance/Math");
+
+            var contentLength = PDF.BinaryData.Length;
+            Response.Headers["Content-Length"] = contentLength.ToString();
+            Response.Headers.Add("Content-Disposition", "inline; filename = TimeTableForStudent.pdf");
+
+            return File(PDF.BinaryData, "Application/pdf;");
+
+        }
+        public IActionResult TechPDF()
+        {
+            var Renderer = new IronPdf.ChromePdfRenderer();
+            //create the doc
+            using var PDF = Renderer.RenderUrlAsPdf("http://sict-iis.mandela.ac.za/19/Performance/Technology");
+
+            var contentLength = PDF.BinaryData.Length;
+            Response.Headers["Content-Length"] = contentLength.ToString();
+            Response.Headers.Add("Content-Disposition", "inline; filename = TimeTableForStudent.pdf");
+
+            return File(PDF.BinaryData, "Application/pdf;");
+
+        }
     }
 }
